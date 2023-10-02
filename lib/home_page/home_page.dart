@@ -122,14 +122,23 @@ class _HomePageState extends State<HomePage> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Personal Info'),
+          title: const Text(
+            'Personal Info',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                const Text('Name'),
+                const Text(
+                  'Name',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 TextFormField(),
                 const SizedBox(height: 20),
-                const Text('Age'),
+                const Text(
+                  'Age',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 TextFormField(),
               ],
             ),
