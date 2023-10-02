@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<SplashBloc, SplashAuthStatus>(
       builder: (context, state) {
         return ScreenUtilInit(
-          //TODO
+          //TODO give correct size
           designSize: const Size(360, 800),
           minTextAdapt: true,
           splitScreenMode: true,
@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//TODO move to diff page
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -197,6 +198,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+//TODO move to diff page
 
 class HomePageItem extends StatelessWidget {
   final String text;

@@ -92,6 +92,7 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 }
+//TODO move to diff page
 
 class SplashBloc extends Cubit<SplashAuthStatus> {
   SplashBloc() : super(SplashAuthStatus.initial);
@@ -107,6 +108,7 @@ class SplashBloc extends Cubit<SplashAuthStatus> {
     emit(SplashAuthStatus.authorized);
   }
 }
+//TODO move to diff page
 
 enum SplashAuthStatus {
   initial,

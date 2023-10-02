@@ -13,32 +13,6 @@ class PreferencesServices {
     return preferences.setString(ShPrefKeys.token, token);
   }
 
-  static Future<String?> getUserId() async {
-    final preferences = await SharedPreferences.getInstance();
-    return preferences.getString(ShPrefKeys.id);
-  }
-
-  static Future<bool> saveUserId(String id) async {
-    final preferences = await SharedPreferences.getInstance();
-    return preferences.setString(ShPrefKeys.id, id);
-  }
-
-  static Future<String?> getPasscode() async {
-    final preferences = await SharedPreferences.getInstance();
-    return preferences.getString(ShPrefKeys.passcode);
-  }
-
-  static Future<String> savePasscode(String passcode) async {
-    final preferences = await SharedPreferences.getInstance();
-    await preferences.setString(ShPrefKeys.passcode, passcode);
-    return passcode;
-  }
-
-  static Future<bool> saveIsPasscodeOn(bool passcode) async {
-    final preferences = await SharedPreferences.getInstance();
-    return preferences.setBool(ShPrefKeys.passcode, passcode);
-  }
-
   static Future<bool> clearAll() async {
     final preferences = await SharedPreferences.getInstance();
     return await preferences.clear();
@@ -48,25 +22,8 @@ class PreferencesServices {
     final preferences = await SharedPreferences.getInstance();
     return await preferences.remove(ShPrefKeys.passcode);
   }
-
-  // Save the map to SharedPreferences
-  static Future<void> saveMapToSharedPreferences(Map<dynamic, dynamic> map) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String jsonString = json.encode(map);
-    await prefs.setString(ShPrefKeys.mapKey, jsonString);
-  }
-
-// Retrieve the map from SharedPreferences
-  static Future<Map<dynamic, dynamic>> getMapFromSharedPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? jsonString = prefs.getString(ShPrefKeys.mapKey);
-    if (jsonString != null) {
-      Map<dynamic, dynamic> map = json.decode(jsonString);
-      return map;
-    }
-    return {}; // return an empty map when jsonString is null
-  }
 }
+//TODO move to diff page
 
 abstract class ShPrefKeys {
   static const email = 'email';
