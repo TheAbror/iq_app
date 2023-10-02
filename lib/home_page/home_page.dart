@@ -116,6 +116,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+
   Future<void> _showMyDialog() async {
     return showDialog<void>(
       context: context,
@@ -133,13 +136,17 @@ class _HomePageState extends State<HomePage> {
                   'Name',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                TextFormField(),
+                TextFormField(
+                  controller: _nameController,
+                ),
                 const SizedBox(height: 20),
                 const Text(
                   'Age',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                TextFormField(),
+                TextFormField(
+                  controller: _ageController,
+                ),
               ],
             ),
           ),
