@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iq_app/main_route_generator.dart';
+import 'package:iq_app/splash_page/bloc/splash_bloc.dart';
+import 'package:iq_app/splash_page/splash_auth_status.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,31 +16,10 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   final splashBloc = SplashBloc();
 
-  // ignore: prefer_typing_uninitialized_variables
-  // var savedValue;
-
-  // void getMapInfo() async {
-  //   savedValue = await PreferencesServices.getMapFromSharedPreferences();
-  // }
-
-  // String? systemPasscode;
-
-  // void getDBPasscode() async {
-  //   String? passcode = await PreferencesServices.getPasscode();
-  //   if (passcode != null) {
-  //     setState(() {
-  //       systemPasscode = passcode;
-  //     });
-  //   }
-  // }
-
   @override
   void initState() {
-    super.initState();
-
-    // getMapInfo();
     splashBloc.setupInitialSettings();
-    // getDBPasscode();
+    super.initState();
   }
 
   @override
@@ -90,27 +71,4 @@ class _SplashPageState extends State<SplashPage> {
       ),
     );
   }
-}
-//TODO move to diff page
-
-class SplashBloc extends Cubit<SplashAuthStatus> {
-  SplashBloc() : super(SplashAuthStatus.initial);
-
-  Future setupInitialSettings() async {
-    // final token = await PreferencesServices.getToken();
-    final token = 'Abror';
-    // ApiProvider.create(token: token);
-
-    await Future.delayed(const Duration(seconds: 2));
-
-    // emit(token == null ? SplashAuthStatus.notAuthorized : SplashAuthStatus.authorized);
-    emit(SplashAuthStatus.authorized);
-  }
-}
-//TODO move to diff page
-
-enum SplashAuthStatus {
-  initial,
-  authorized,
-  notAuthorized,
 }
