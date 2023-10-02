@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:iq_app/core/roots/app_routes.dart';
 import 'package:iq_app/core/roots/custom_cupertino_route.dart';
-import 'package:iq_app/main.dart';
+import 'package:iq_app/home_page/home_page.dart';
 import 'package:iq_app/splash_page/splash_page.dart';
 
 class MainRouteGenerator {
