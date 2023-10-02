@@ -8,6 +8,21 @@ class TakeIQTest extends StatefulWidget {
   State<TakeIQTest> createState() => _TakeIQTestState();
 }
 
+List<String> myList = [
+  'What is the square root of 144',
+  'What is the next number in the sequence: 1, 4, 9, 16, 25, ___?',
+  'What is the capital city of Australia?',
+  'If a train travels at a speed of 60 mph for 2 hours, how far has it traveled?',
+  'What is the chemical symbol for gold?',
+  'Which planet in our solar system is known as the “Red Planet”?',
+  'What is the largest mammal in the world?',
+  'What is the smallest country in the world by land area?',
+  'Who wrote the novel “To Kill a Mockingbird”?',
+  'Which year did World War II end?',
+];
+
+int counter = 0;
+
 class _TakeIQTestState extends State<TakeIQTest> {
   @override
   Widget build(BuildContext context) {
@@ -16,9 +31,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: const BackButton(
-          color: Colors.black, // <-- SEE HERE
-        ),
+        leading: const BackButton(color: Colors.black),
         title: const Text(
           'Topic: Countries',
           style: TextStyle(
@@ -41,11 +54,29 @@ class _TakeIQTestState extends State<TakeIQTest> {
                 borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(),
               ),
+              child: Center(
+                child: Text(
+                  myList[counter],
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
             SizedBox(height: 40.h),
-            const AnwerItem(
+            AnwerItem(
               letter: 'A) ',
               text: 'Spain',
+              onTap: () {
+                if (counter + 1 < myList.length) {
+                  setState(() {
+                    counter++;
+                  });
+                }
+              },
             ),
             const AnwerItem(
               letter: 'B) ',
@@ -69,39 +100,44 @@ class _TakeIQTestState extends State<TakeIQTest> {
 class AnwerItem extends StatelessWidget {
   final String letter;
   final String text;
+  final VoidCallback? onTap;
 
   const AnwerItem({
     Key? key,
     required this.letter,
     required this.text,
+    this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: double.infinity,
-      margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 15.h),
-      padding: EdgeInsets.all(8.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(
-          color: Colors.black,
-          width: 0.5,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 50,
+        width: double.infinity,
+        margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 15.h),
+        padding: EdgeInsets.all(8.w),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(
+            color: Colors.black,
+            width: 0.5,
+          ),
         ),
-      ),
-      child: Row(
-        children: [
-          Text(
-            letter,
-            style: TextStyle(fontSize: 24.sp),
-          ),
-          Text(
-            text,
-            style: TextStyle(fontSize: 24.sp),
-          ),
-        ],
+        child: Row(
+          children: [
+            Text(
+              letter,
+              style: TextStyle(fontSize: 24.sp),
+            ),
+            Text(
+              text,
+              style: TextStyle(fontSize: 24.sp),
+            ),
+          ],
+        ),
       ),
     );
   }
