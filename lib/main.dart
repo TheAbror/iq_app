@@ -30,8 +30,7 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<SplashBloc, SplashAuthStatus>(
       builder: (context, state) {
         return ScreenUtilInit(
-          //TODO give correct size
-          designSize: const Size(360, 800),
+          designSize: const Size(430, 932),
           minTextAdapt: true,
           splitScreenMode: true,
           builder: (context, child) {
