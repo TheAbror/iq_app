@@ -2,7 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:iq_app/main.dart';
-import 'package:iq_app/splash_page.dart';
+import 'package:iq_app/splash_page/splash_page.dart';
 
 class MainRouteGenerator {
   Route<dynamic>? generateRoute(RouteSettings settings) {

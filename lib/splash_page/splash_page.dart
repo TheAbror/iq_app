@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iq_app/main_route_generator.dart';
-import 'package:iq_app/preference_services.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -76,7 +75,7 @@ class _SplashPageState extends State<SplashPage> {
             SizedBox(height: 250.h),
             Center(
               child: SvgPicture.asset(
-                'assets/Component 1.svg',
+                'assets/images/Component 1.svg',
                 width: 260.w,
                 fit: BoxFit.fill,
               ),

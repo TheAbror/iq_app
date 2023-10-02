@@ -62,9 +62,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - assets/fonts/
+    - assets/images/
 
   fonts:
     - family: Raleway
       fonts:
-        - asset: assets/Raleway/Raleway-VariableFont_wght.ttf
+        - asset: assets/fonts/Raleway/Raleway-VariableFont_wght.ttf

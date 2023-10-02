@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iq_app/main_route_generator.dart';
-import 'package:iq_app/splash_page.dart';
+import 'package:iq_app/splash_page/splash_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -86,10 +86,10 @@ class _HomePageState extends State<HomePage> {
             children: [
               const CircleAvatar(
                 radius: 27,
-                backgroundImage: AssetImage('assets/avatar.jpeg'),
+                backgroundImage: AssetImage('assets/images/avatar.jpeg'),
               ),
               SvgPicture.asset(
-                'assets/Component 1.svg',
+                'assets/images/Component 1.svg',
                 height: 70,
               ),
             ],
