@@ -1,6 +1,6 @@
-// ignore_for_file: no_duplicate_case_values
-
 import 'package:flutter/cupertino.dart';
+import 'package:iq_app/core/roots/app_routes.dart';
+import 'package:iq_app/core/roots/custom_cupertino_route.dart';
 import 'package:iq_app/main.dart';
 import 'package:iq_app/splash_page/splash_page.dart';
 
@@ -22,27 +22,4 @@ class MainRouteGenerator {
         );
     }
   }
-}
-//TODO move to diff page
-
-abstract class AppRoutes {
-  static const homePage = '/homePage';
-  static const splashPage = '/splashPage';
-}
-
-class CustomCupertinoStyleNavigationRoute extends CupertinoPageRoute {
-  @override
-  bool get hasScopedWillPopCallback => false;
-
-  CustomCupertinoStyleNavigationRoute({
-    required WidgetBuilder builder,
-    RouteSettings? settings,
-    bool maintainState = true,
-    bool fullscreenDialog = false,
-  }) : super(
-          builder: builder,
-          settings: settings,
-          maintainState: maintainState,
-          fullscreenDialog: fullscreenDialog,
-        );
 }
