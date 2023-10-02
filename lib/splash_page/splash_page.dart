@@ -57,7 +57,7 @@ class _SplashPageState extends State<SplashPage> {
             Center(
               child: SvgPicture.asset(
                 'assets/images/Component 1.svg',
-                width: 260.w,
+                width: 350.w,
                 fit: BoxFit.fill,
               ),
             ),

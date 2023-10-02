@@ -3,7 +3,6 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iq_app/core/preference_services/preference_services.dart';
-import 'package:iq_app/core/roots/app_routes.dart';
 import 'package:iq_app/home_page/home_page_item.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,21 +13,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? name;
+  String? name = 'Abror';
 
   void getName() async {
     String? nameD = await PreferencesServices.getName();
     if (nameD != null) {
-      setState(() {
-        nameD = name;
-      });
+      nameD = name;
     }
   }
 
   @override
   void initState() {
-    getName();
     super.initState();
+
+    getName();
   }
 
   @override
@@ -51,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                 backgroundImage: AssetImage('assets/images/avatar.jpeg'),
               ),
               SvgPicture.asset(
-                'assets/images/Component 1.svg',
+                'assets/images/Component 3.svg',
                 height: 70,
               ),
             ],

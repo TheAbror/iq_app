@@ -89,6 +89,7 @@ class _SignInPageState extends State<SignInPage> {
                   final age = _ageController.text.trim();
                   await PreferencesServices.saveName(name);
                   await PreferencesServices.saveAge(age);
+                  print(name);
 
                   const CircularProgressIndicator();
 
@@ -107,7 +108,7 @@ class _SignInPageState extends State<SignInPage> {
                       width: 0.5.w,
                     ),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Save',
                       style: TextStyle(
