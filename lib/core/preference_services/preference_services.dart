@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:iq_app/core/preference_services/sh_pref_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesServices {
@@ -17,21 +16,4 @@ class PreferencesServices {
     final preferences = await SharedPreferences.getInstance();
     return await preferences.clear();
   }
-
-  static Future<bool> removePasscode() async {
-    final preferences = await SharedPreferences.getInstance();
-    return await preferences.remove(ShPrefKeys.passcode);
-  }
-}
-//TODO move to diff page
-
-abstract class ShPrefKeys {
-  static const email = 'email';
-  static const sessionId = 'sessionId';
-  static const isOnBoardingFinished = 'isOnBoardingFinished';
-  static const token = 'token';
-  static const id = 'id';
-  static var passcodeEnabled = true;
-  static var passcode = 'passcode';
-  static var mapKey = 'mapKey';
 }

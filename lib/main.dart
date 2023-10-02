@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:iq_app/main_route_generator.dart';
 import 'package:iq_app/splash_page/bloc/splash_bloc.dart';
 import 'package:iq_app/splash_page/splash_auth_status.dart';
-import 'package:iq_app/splash_page/splash_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
