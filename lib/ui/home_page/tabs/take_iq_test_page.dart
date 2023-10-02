@@ -8,7 +8,7 @@ class TakeIQTest extends StatefulWidget {
   State<TakeIQTest> createState() => _TakeIQTestState();
 }
 
-List<String> myList = [
+List<String> myQuestionsList = [
   'What is the square root of 144',
   'What is the next number in the sequence: 1, 4, 9, 16, 25, ___?',
   'What is the capital city of Australia?',
@@ -19,6 +19,19 @@ List<String> myList = [
   'What is the smallest country in the world by land area?',
   'Who wrote the novel “To Kill a Mockingbird”?',
   'Which year did World War II end?',
+];
+
+List<String> myAnswersList = [
+  '12',
+  '36',
+  'Canberra',
+  '120 miles',
+  'Au',
+  'Mars',
+  'Blue Whale',
+  'Vatican City',
+  'Harper Lee',
+  '1945',
 ];
 
 int counter = 0;
@@ -56,7 +69,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
               ),
               child: Center(
                 child: Text(
-                  myList[counter],
+                  myQuestionsList[counter],
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -69,9 +82,9 @@ class _TakeIQTestState extends State<TakeIQTest> {
             SizedBox(height: 40.h),
             AnwerItem(
               letter: 'A) ',
-              text: 'Spain',
+              text: myAnswersList[counter],
               onTap: () {
-                if (counter + 1 < myList.length) {
+                if (counter + 1 < myQuestionsList.length) {
                   setState(() {
                     counter++;
                   });
