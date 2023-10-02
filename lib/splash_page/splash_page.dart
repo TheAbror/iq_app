@@ -36,7 +36,7 @@ class _SplashPageState extends State<SplashPage> {
             break;
           case SplashAuthStatus.authorized:
             Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRoutes.homePage,
+              AppRoutes.signin,
               (route) => false,
             );
             break;

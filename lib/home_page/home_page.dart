@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iq_app/core/preference_services/preference_services.dart';
 import 'package:iq_app/home_page/home_page_item.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,11 +11,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String? name;
+
+  void getName() async {
+    String? nameD = await PreferencesServices.getName();
+    if (nameD != null) {
+      setState(() {
+        nameD = name;
+      });
+    }
+  }
+
   @override
   void initState() {
-    Future.delayed(Duration.zero, () {
-      _showMyDialog();
-    });
+    // Future.delayed(Duration.zero, () {});
+    getName();
     super.initState();
   }
 
@@ -51,9 +62,9 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 40),
-            const Text(
-              'Hi David',
-              style: TextStyle(fontSize: 24),
+            Text(
+              'Hi ' '$name',
+              style: const TextStyle(fontSize: 24),
             ),
             const Text(
               'Welcome to Dr.iQ',
@@ -115,6 +126,23 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
+
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      _showMyDialog();
+    });
+    super.initState();
+  }
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
@@ -153,7 +181,14 @@ class _HomePageState extends State<HomePage> {
           actions: <Widget>[
             TextButton(
               child: const Text('Save'),
-              onPressed: () {
+              onPressed: () async {
+                final name = _nameController.text.trim();
+                final age = _ageController.text.trim();
+                await PreferencesServices.saveName(name);
+                await PreferencesServices.saveAge(age);
+
+                CircularProgressIndicator();
+
                 Navigator.of(context).pop();
               },
             ),
@@ -161,5 +196,14 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: Column(
+          children: [],
+        ));
   }
 }

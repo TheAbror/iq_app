@@ -12,14 +12,14 @@ class PreferencesServices {
     return preferences.setString(ShPrefKeys.name, token);
   }
 
-  static Future<int?> getAge() async {
+  static Future<String?> getAge() async {
     final preferences = await SharedPreferences.getInstance();
-    return preferences.getInt(ShPrefKeys.age);
+    return preferences.getString(ShPrefKeys.age);
   }
 
-  static Future<bool> saveAge(int age) async {
+  static Future<bool> saveAge(String age) async {
     final preferences = await SharedPreferences.getInstance();
-    return preferences.setInt(ShPrefKeys.age, age);
+    return preferences.setString(ShPrefKeys.age, age);
   }
 
   static Future<bool> clearAll() async {

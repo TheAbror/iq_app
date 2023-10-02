@@ -6,8 +6,6 @@ class SplashBloc extends Cubit<SplashAuthStatus> {
 
   Future setupInitialSettings() async {
     // final token = await PreferencesServices.getToken();
-    // ignore: prefer_const_declarations
-    // ApiProvider.create(token: token);
 
     await Future.delayed(const Duration(seconds: 2));
 

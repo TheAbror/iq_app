@@ -15,6 +15,10 @@ class MainRouteGenerator {
         return CustomCupertinoStyleNavigationRoute(
           builder: (_) => const HomePage(),
         );
+      case AppRoutes.signin:
+        return CustomCupertinoStyleNavigationRoute(
+          builder: (_) => const SignInPage(),
+        );
 
       default:
         return CustomCupertinoStyleNavigationRoute(
