@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
-      this._showMyDialog();
+      _showMyDialog();
     });
     super.initState();
   }
