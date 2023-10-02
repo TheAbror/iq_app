@@ -3,8 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app/core/roots/main_route_generator.dart';
-import 'package:iq_app/splash_page/bloc/splash_bloc.dart';
-import 'package:iq_app/splash_page/splash_auth_status.dart';
+import 'package:iq_app/ui/splash_page/splash_auth_status.dart';
+
+import 'ui/splash_page/bloc/splash_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

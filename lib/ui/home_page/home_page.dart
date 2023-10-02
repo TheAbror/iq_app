@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iq_app/core/preference_services/preference_services.dart';
-import 'package:iq_app/home_page/home_page_item.dart';
+import 'package:iq_app/core/roots/app_routes.dart';
+import 'package:iq_app/ui/home_page/home_page_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
               ),
               SvgPicture.asset(
                 'assets/images/Component 3.svg',
-                height: 70,
+                height: 60,
               ),
             ],
           ),
@@ -76,16 +76,20 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 HomePageItem(
                   icon: Icons.text_increase_sharp,
                   text: 'Take IQ Test',
-                  color: Color(0xffc30010),
+                  color: const Color(0xffc30010),
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.homePage);
+                  },
                 ),
                 HomePageItem(
                   icon: Icons.data_object_outlined,
                   text: 'History',
-                  color: Color(0xff17181d),
+                  color: const Color(0xff17181d),
+                  onTap: () {},
                 ),
               ],
             ),

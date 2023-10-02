@@ -89,9 +89,6 @@ class _SignInPageState extends State<SignInPage> {
                   final age = _ageController.text.trim();
                   await PreferencesServices.saveName(name);
                   await PreferencesServices.saveAge(age);
-                  print(name);
-
-                  const CircularProgressIndicator();
 
                   // ignore: use_build_context_synchronously
                   Navigator.pushNamed(context, AppRoutes.homePage);
