@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                   text: 'Take IQ Test',
                   color: const Color(0xffc30010),
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.homePage);
+                    Navigator.pushNamed(context, AppRoutes.takeiqtest);
                   },
                 ),
                 HomePageItem(

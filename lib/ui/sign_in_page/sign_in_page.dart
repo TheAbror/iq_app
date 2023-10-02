@@ -96,7 +96,6 @@ class _SignInPageState extends State<SignInPage> {
                 child: Container(
                   height: 45,
                   width: double.infinity,
-                  margin: EdgeInsets.only(left: 16.w),
                   padding: EdgeInsets.all(8.w),
                   decoration: BoxDecoration(
                     color: Colors.black,
@@ -105,12 +104,13 @@ class _SignInPageState extends State<SignInPage> {
                       width: 0.5.w,
                     ),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Save',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontSize: 20.sp,
                       ),
                     ),
                   ),
