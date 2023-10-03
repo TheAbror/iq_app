@@ -33,6 +33,21 @@ List<String> myAnswersList = [
   'Harper Lee',
   '1945',
 ];
+// List<String> myOptionsList = [
+//    {
+//     ''
+//   }
+//   '36',
+//   'Canberra',
+//   '120 miles',
+//   'Au',
+//   'Mars',
+//   'Blue Whale',
+//   'Vatican City',
+//   'Harper Lee',
+//   '1945',
+//   }
+// ];
 
 int counter = 0;
 
