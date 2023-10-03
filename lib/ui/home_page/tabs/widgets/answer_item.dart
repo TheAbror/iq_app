@@ -20,7 +20,6 @@ class AnwerItem extends StatelessWidget {
       child: Container(
         height: 50,
         width: double.infinity,
-        margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 15.h),
         padding: EdgeInsets.all(8.w),
         decoration: BoxDecoration(
           color: Colors.white,

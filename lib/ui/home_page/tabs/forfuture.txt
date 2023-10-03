@@ -7,7 +7,6 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:iq_app/core/bloc_progress.dart';
 import 'package:iq_app/core/something_went_wrong.dart';
 import 'package:iq_app/ui/home_page/tabs/bloc/questions_bloc.dart';
-import 'package:iq_app/ui/home_page/tabs/widgets/answer_item.dart';
 import 'question_modesl.dart';
 
 class TakeIQTest extends StatefulWidget {
@@ -53,7 +52,12 @@ class _TakeIQTestState extends State<TakeIQTest> {
       body: SafeArea(
         child: BlocProvider(
           create: (context) => QuestionsBloc(),
-          child: BlocBuilder<QuestionsBloc, QuestionsState>(
+          child: BlocConsumer<QuestionsBloc, QuestionsState>(
+            listener: (context, state) {
+              if (state.blocProgress == BlocProgress.IS_SUCCESS) {
+                //TODO
+              }
+            },
             builder: (context, state) {
               if (questions.isEmpty) {
                 return const Center(
@@ -91,50 +95,55 @@ class _TakeIQTestState extends State<TakeIQTest> {
                     ),
                     // Text(questions[0].question),
                     SizedBox(height: 40.h),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        itemCount: questions[0].options.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            title: AnwerItem(
-                              letter: '',
-                              text: questions[counter].options[index],
-                              // style: const TextStyle(fontWeight: FontWeight.w800),
-                            ),
-                            onTap: () {
-                              if (questions[counter].options[index] == questions[counter].answer) {
-                                print('correct');
-                                icons.add(
-                                  Icon(
-                                    Icons.done,
-                                    color: Colors.green.shade800,
-                                  ),
-                                );
-                              } else {
-                                print('wrong');
-                                icons.add(
-                                  Icon(
-                                    Icons.exposure_minus_1_outlined,
-                                    color: Colors.red.shade800,
-                                  ),
-                                );
-                              }
-                              if (counter + 1 < questions.length) {
-                                setState(() {
-                                  counter++;
-                                });
-                              }
-                            },
-                          );
-                        }),
+                    ListView.separated(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: questions[0].options.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(
+                            questions[counter].options[index],
+                            style: const TextStyle(fontWeight: FontWeight.w800),
+                          ),
+                          onTap: () {
+                            if (questions[counter].options[index] == questions[counter].answer) {
+                              print('correct');
+                              final currentState = state.copyWith(
+                                icons: [...state.icons, const Icon(Icons.exposure_minus_1_outlined)],
+                              );
+                              setState(() {
+                                state = currentState;
+                              });
+                              currentState;
+                            } else {
+                              print('wrong');
+                              final currentState = state.copyWith(
+                                icons: [...state.icons, const Icon(Icons.exposure_minus_1_outlined)],
+                              );
+                              setState(() {
+                                state = currentState;
+                              });
+                              currentState;
+                            }
+                            if (counter + 1 < questions.length) {
+                              setState(() {
+                                counter++;
+                              });
+                            }
+                          },
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(height: 1, color: Colors.black),
+                    ),
+                    const Divider(height: 1, color: Colors.black),
                     SizedBox(height: 40.h),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
-                      children: icons,
-                    )
+                      children: state.icons.isNotEmpty ? state.icons : [Text("No icons to display")],
+                    ),
                   ],
                 ),
               );
