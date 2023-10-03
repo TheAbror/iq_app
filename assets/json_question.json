@@ -38,5 +38,105 @@
             "Lhotse"
         ],
         "answer": "Mount Everest"
+    },
+    {
+        "question": "What is the official language of Brazil?",
+        "options": [
+            "Portuguese",
+            "Spanish",
+            "French",
+            "Italian"
+        ],
+        "answer": "Portuguese"
+    },
+    {
+        "question": "Which country is known as the 'Land of the Rising Sun'?",
+        "options": [
+            "Japan",
+            "China",
+            "India",
+            "Australia"
+        ],
+        "answer": "Japan"
+    },
+    {
+        "question": "What is the currency of Australia?",
+        "options": [
+            "Australian Dollar",
+            "Euro",
+            "Pound Sterling",
+            "Yen"
+        ],
+        "answer": "Australian Dollar"
+    },
+    {
+        "question": "Which country is famous for the Great Wall?",
+        "options": [
+            "China",
+            "India",
+            "Italy",
+            "Egypt"
+        ],
+        "answer": "China"
+    },
+    {
+        "question": "What is the largest ocean in the world?",
+        "options": [
+            "Pacific Ocean",
+            "Atlantic Ocean",
+            "Indian Ocean",
+            "Arctic Ocean"
+        ],
+        "answer": "Pacific Ocean"
+    },
+    {
+        "question": "Which country is the birthplace of the Olympic Games?",
+        "options": [
+            "Greece",
+            "Italy",
+            "France",
+            "Egypt"
+        ],
+        "answer": "Greece"
+    },
+    {
+        "question": "What is the national animal of Canada?",
+        "options": [
+            "Beaver",
+            "Bald Eagle",
+            "Polar Bear",
+            "Kangaroo"
+        ],
+        "answer": "Beaver"
+    },
+    {
+        "question": "Which country is known for its tulips and windmills?",
+        "options": [
+            "Netherlands",
+            "Sweden",
+            "Switzerland",
+            "Denmark"
+        ],
+        "answer": "Netherlands"
+    },
+    {
+        "question": "What is the official language of India?",
+        "options": [
+            "Hindi",
+            "English",
+            "Bengali",
+            "Tamil"
+        ],
+        "answer": "Hindi"
+    },
+    {
+        "question": "Which country is home to the Pyramids of Giza?",
+        "options": [
+            "Egypt",
+            "Mexico",
+            "Peru",
+            "China"
+        ],
+        "answer": "Egypt"
     }
 ]

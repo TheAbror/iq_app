@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,36 +16,11 @@ class TakeIQTest extends StatefulWidget {
   State<TakeIQTest> createState() => _TakeIQTestState();
 }
 
-List<String> myQuestionsList = [
-  'What is the square root of 144',
-  'What is the next number in the sequence: 1, 4, 9, 16, 25, ___?',
-  'What is the capital city of Australia?',
-  'If a train travels at a speed of 60 mph for 2 hours, how far has it traveled?',
-  'What is the chemical symbol for gold?',
-  'Which planet in our solar system is known as the “Red Planet”?',
-  'What is the largest mammal in the world?',
-  'What is the smallest country in the world by land area?',
-  'Who wrote the novel “To Kill a Mockingbird”?',
-  'Which year did World War II end?',
-];
-
-List<String> myAnswersList = [
-  '12',
-  '36',
-  'Canberra',
-  '120 miles',
-  'Au',
-  'Mars',
-  'Blue Whale',
-  'Vatican City',
-  'Harper Lee',
-  '1945',
-];
-
 int counter = 0;
 
 class _TakeIQTestState extends State<TakeIQTest> {
   List<Question> questions = [];
+  List<Icon> icons = [];
 
   void loadData() async {
     String jsonString = await rootBundle.loadString('assets/json_question.json');
@@ -53,7 +30,6 @@ class _TakeIQTestState extends State<TakeIQTest> {
   @override
   void initState() {
     loadData();
-
     super.initState();
   }
 
@@ -63,7 +39,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 1,
         leading: const BackButton(color: Colors.black),
         title: const Text(
           'Topic: Countries',
@@ -75,10 +51,10 @@ class _TakeIQTestState extends State<TakeIQTest> {
       ),
       body: SafeArea(
         child: BlocProvider(
-          create: (context) => QuestionsBloc()..getQuestions(),
+          create: (context) => QuestionsBloc(),
           child: BlocBuilder<QuestionsBloc, QuestionsState>(
             builder: (context, state) {
-              if (state.blocProgress == BlocProgress.IS_LOADING) {
+              if (questions.isEmpty) {
                 return const Center(
                   child: CircularProgressIndicator(color: Colors.black),
                 );
@@ -86,54 +62,83 @@ class _TakeIQTestState extends State<TakeIQTest> {
               if (state.blocProgress == BlocProgress.FAILED) {
                 return const SomethingWentWrong();
               }
-              return Column(
-                children: [
-                  SizedBox(height: 40.h),
-                  Container(
-                    height: 300,
-                    width: double.infinity,
-                    margin: EdgeInsets.only(left: 16.w, right: 16.w),
-                    padding: EdgeInsets.all(8.w),
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(8.r),
-                      border: Border.all(),
-                    ),
-                    child: Center(
-                      child: Text(
-                        myQuestionsList[counter],
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
+              return Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  children: [
+                    SizedBox(height: 30.h),
+                    Container(
+                      height: 300,
+                      width: double.infinity,
+                      padding: EdgeInsets.all(8.w),
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(8.r),
+                        border: Border.all(),
+                      ),
+                      child: Center(
+                        child: Text(
+                          questions[counter].question,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                  Text(questions[0].question),
-                  SizedBox(height: 40.h),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: questions[0].options.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(questions[0].options[index]),
-                        onTap: () {
-                          if (questions[0].options[index] == questions[0].answer) {
-                            print('correct');
-                            // User selected the correct answer
-                          } else {
-                            print('wrong');
-
-                            // User selected the wrong answer
-                          }
-                        },
-                      );
-                    },
-                  ),
-                  SizedBox(height: 40.h),
-                ],
+                    // Text(questions[0].question),
+                    SizedBox(height: 40.h),
+                    ListView.separated(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: questions[0].options.length,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          title: Text(
+                            questions[counter].options[index],
+                            style: const TextStyle(fontWeight: FontWeight.w800),
+                          ),
+                          onTap: () {
+                            if (questions[counter].options[index] == questions[counter].answer) {
+                              print('correct');
+                              icons.add(
+                                Icon(
+                                  Icons.done,
+                                  color: Colors.green.shade800,
+                                ),
+                              );
+                            } else {
+                              print('wrong');
+                              icons.add(
+                                Icon(
+                                  Icons.exposure_minus_1_outlined,
+                                  color: Colors.red.shade800,
+                                ),
+                              );
+                            }
+                            if (counter + 1 < questions.length) {
+                              setState(() {
+                                counter++;
+                              });
+                            }
+                          },
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const Divider(height: 1, color: Colors.black),
+                    ),
+                    const Divider(height: 1, color: Colors.black),
+                    SizedBox(height: 40.h),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: icons,
+                    )
+                  ],
+                ),
               );
             },
           ),

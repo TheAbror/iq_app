@@ -19,12 +19,14 @@ class QuestionsBloc extends Cubit<QuestionsState> {
       final jsonList = json.decode(jsonString);
       final questions = jsonList.map((json) => Question.fromJson(json)).toList();
 
-      emit(
-        state.copyWith(
-          questions: questions,
-          blocProgress: BlocProgress.LOADED,
-        ),
-      );
+      if (jsonList != null) {
+        emit(
+          state.copyWith(
+            questions: questions,
+            blocProgress: BlocProgress.LOADED,
+          ),
+        );
+      }
     } catch (e) {
       emit(state.copyWith(
         blocProgress: BlocProgress.FAILED,
