@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePageItem extends StatelessWidget {
   final String text;
@@ -19,8 +20,8 @@ class HomePageItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 165,
-        width: 189,
+        height: 165.h,
+        width: 189.w,
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: color,
