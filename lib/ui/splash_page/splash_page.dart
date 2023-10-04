@@ -60,11 +60,12 @@ class _SplashPageState extends State<SplashPage> {
                 'assets/images/Component 1.svg',
                 width: 350.w,
                 fit: BoxFit.fill,
+                color: AppColors.textMain,
               ),
             ),
             SizedBox(height: 170.h),
             const Center(
-              child: CircularProgressIndicator(color: Colors.black),
+              child: CircularProgressIndicator(color: AppColors.textMain),
             ),
             SizedBox(height: 155.h),
           ],

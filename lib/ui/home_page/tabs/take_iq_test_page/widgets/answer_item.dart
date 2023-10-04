@@ -26,7 +26,7 @@ class AnwerItem extends StatelessWidget {
           color: AppColors.float,
           borderRadius: BorderRadius.circular(8.r),
           border: Border.all(
-            color: Colors.black,
+            color: AppColors.textMain,
             width: 0.5.w,
           ),
         ),

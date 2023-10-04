@@ -33,36 +33,16 @@ class _SignInPageState extends State<SignInPage> {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              // Neumorphic(
-              //   style: NeumorphicStyle(
-              //       shape: NeumorphicShape.concave,
-              //       boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(12)),
-              //       depth: 8,
-              //       lightSource: LightSource.topLeft,
-              //       color: Colors.grey),
-              //   child: NeumorphicText(
-              //     "I love flutter",
-              //     style: const NeumorphicStyle(
-              //       depth: 4, //customize depth here
-              //       color: AppColors.float, //customize color here
-              //     ),
-              //     textStyle: NeumorphicTextStyle(
-              //       fontSize: 18, //customize size here
-              //       // AND others usual text style properties (fontFamily, fontWeight, ...)
-              //     ),
-              //   ),
-              // ),
               const SizedBox(height: 70),
-
               Center(
                 child: SvgPicture.asset(
                   'assets/images/Component 1.svg',
                   width: 350.w,
                   fit: BoxFit.fill,
+                  color: AppColors.textMain,
                 ),
               ),
               const SizedBox(height: 70),
-
               ListBody(
                 children: <Widget>[
                   const Text(
@@ -99,7 +79,7 @@ class _SignInPageState extends State<SignInPage> {
                   width: double.infinity,
                   padding: EdgeInsets.all(8.w),
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: AppColors.textMain,
                     borderRadius: BorderRadius.circular(8.r),
                     border: Border.all(
                       width: 0.5.w,
@@ -117,7 +97,6 @@ class _SignInPageState extends State<SignInPage> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 40),
             ],
           ),

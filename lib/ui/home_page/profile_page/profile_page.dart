@@ -12,12 +12,12 @@ class ProfilePage extends StatelessWidget {
       // appBar: AppBar(
       //   backgroundColor: AppColors.float,
       //   elevation: 0,
-      //   leading: const BackButton(color: Colors.black),
+      //   leading: const BackButton(color: AppColors.textMain),
       //   title: const Text(
       //     '',
       //     // 'Profile',
       //     style: TextStyle(
-      //       color: Colors.black,
+      //       color: AppColors.textMain,
       //       fontWeight: FontWeight.bold,
       //     ),
       //   ),

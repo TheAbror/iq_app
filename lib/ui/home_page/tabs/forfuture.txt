@@ -40,11 +40,11 @@ class _TakeIQTestState extends State<TakeIQTest> {
       appBar: AppBar(
         backgroundColor: AppColors.float,
         elevation: 1,
-        leading: const BackButton(color: Colors.black),
+        leading: const BackButton(color: AppColors.textMain),
         title: const Text(
           'Topic: Countries',
           style: TextStyle(
-            color: Colors.black,
+            color: AppColors.textMain,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -61,7 +61,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
             builder: (context, state) {
               if (questions.isEmpty) {
                 return const Center(
-                  child: CircularProgressIndicator(color: Colors.black),
+                  child: CircularProgressIndicator(color: AppColors.textMain),
                 );
               }
               if (state.blocProgress == BlocProgress.FAILED) {
@@ -77,7 +77,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
                       width: double.infinity,
                       padding: EdgeInsets.all(8.w),
                       decoration: BoxDecoration(
-                        color: Colors.black,
+                        color: AppColors.textMain,
                         borderRadius: BorderRadius.circular(8.r),
                         border: Border.all(),
                       ),
@@ -136,9 +136,9 @@ class _TakeIQTestState extends State<TakeIQTest> {
                         );
                       },
                       separatorBuilder: (BuildContext context, int index) =>
-                          const Divider(height: 1, color: Colors.black),
+                          const Divider(height: 1, color: AppColors.textMain),
                     ),
-                    const Divider(height: 1, color: Colors.black),
+                    const Divider(height: 1, color: AppColors.textMain),
                     SizedBox(height: 40.h),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,

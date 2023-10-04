@@ -34,11 +34,11 @@ class _TakeIQTestState extends State<TakeIQTest> {
       appBar: AppBar(
         backgroundColor: AppColors.float,
         elevation: 1,
-        leading: const BackButton(color: Colors.black),
+        leading: const BackButton(color: AppColors.textMain),
         title: const Text(
           'Topic: Countries',
           style: TextStyle(
-            color: Colors.black,
+            color: AppColors.textMain,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -64,7 +64,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
                     width: double.infinity,
                     padding: EdgeInsets.all(8.w),
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: AppColors.textMain,
                       borderRadius: BorderRadius.circular(8.r),
                       border: Border.all(),
                     ),

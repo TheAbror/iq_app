@@ -15,11 +15,11 @@ class HistoryPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.float,
         elevation: 1,
-        leading: const BackButton(color: Colors.black),
+        leading: const BackButton(color: AppColors.textMain),
         title: const Text(
           'History',
           style: TextStyle(
-            color: Colors.black,
+            color: AppColors.textMain,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -27,7 +27,7 @@ class HistoryPage extends StatelessWidget {
           IconButton(
             icon: const Icon(
               Icons.settings,
-              color: Colors.black,
+              color: AppColors.textMain,
             ),
             onPressed: () {
               clearHistory(context);
