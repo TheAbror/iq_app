@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iq_app/core/app_colors.dart';
 import 'package:iq_app/core/something_went_wrong.dart';
 import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/widgets/answer_item.dart';
 
@@ -29,9 +30,9 @@ class _TakeIQTestState extends State<TakeIQTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.float,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.float,
         elevation: 1,
         leading: const BackButton(color: Colors.black),
         title: const Text(
@@ -71,7 +72,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
                       child: Text(
                         questions[counter].question,
                         style: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.float,
                           fontWeight: FontWeight.bold,
                           fontSize: 24,
                         ),

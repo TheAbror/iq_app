@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iq_app/core/app_colors.dart';
 import 'package:iq_app/core/preference_services/preference_services.dart';
 import 'package:iq_app/core/roots/app_routes.dart';
 import 'package:iq_app/ui/home_page/home_page_item.dart';
@@ -33,12 +34,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.float,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(150.h),
         child: Container(
           height: 120.h,
-          color: Colors.white,
+          color: AppColors.float,
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iq_app/core/app_colors.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -7,9 +8,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.float,
       // appBar: AppBar(
-      //   backgroundColor: Colors.white,
+      //   backgroundColor: AppColors.float,
       //   elevation: 0,
       //   leading: const BackButton(color: Colors.black),
       //   title: const Text(
@@ -43,7 +44,7 @@ class _Body extends StatelessWidget {
             height: 610.h,
             width: 430.w,
             decoration: BoxDecoration(
-              color: Colors.blue.shade900,
+              color: const Color(0xfffd830d),
               borderRadius: BorderRadius.circular(25.r),
             ),
             alignment: Alignment.center,
@@ -63,10 +64,10 @@ class _Body extends StatelessWidget {
               margin: EdgeInsets.only(left: 16.w, right: 16.w),
               padding: EdgeInsets.symmetric(vertical: 15.h),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.float,
                 borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(
-                  color: Colors.white,
+                  color: AppColors.float,
                   width: 0.5.w,
                 ),
               ),
@@ -84,10 +85,12 @@ class _Body extends StatelessWidget {
         Positioned(
           top: 140.h,
           child: CircleAvatar(
+            backgroundColor: const Color(0xfffd830d),
             radius: 70,
             child: Icon(
               Icons.person,
               size: 80,
+              color: AppColors.float,
             ),
           ),
         ),
@@ -95,7 +98,7 @@ class _Body extends StatelessWidget {
           top: 60.h,
           left: 20.w,
           child: BackButton(
-            color: Colors.black,
+            color: const Color(0xfffd830d),
           ),
         ),
       ],
@@ -125,14 +128,16 @@ class ProfileBodyItem extends StatelessWidget {
                 children: [
                   Icon(
                     icons,
-                    color: Colors.white,
+                    color: AppColors.float,
+                    size: 29.sp,
                   ),
                   SizedBox(width: 30.w),
                   Text(
                     text,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: AppColors.float,
+                      fontSize: 20.sp,
                     ),
                   ),
                 ],
@@ -141,7 +146,7 @@ class ProfileBodyItem extends StatelessWidget {
           ),
         ),
         Divider(
-          color: Colors.white,
+          color: AppColors.float,
           thickness: 1.h,
         ),
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iq_app/core/app_colors.dart';
 import 'package:iq_app/ui/home_page/tabs/history_page/clear_history_dialog.dart';
 import 'package:iq_app/ui/home_page/tabs/history_page/history_body_item.dart';
 
@@ -12,7 +13,7 @@ class HistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.float,
         elevation: 1,
         leading: const BackButton(color: Colors.black),
         title: const Text(

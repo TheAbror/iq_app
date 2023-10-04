@@ -36,9 +36,9 @@ class _TakeIQTestState extends State<TakeIQTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.float,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.float,
         elevation: 1,
         leading: const BackButton(color: Colors.black),
         title: const Text(
@@ -85,7 +85,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
                         child: Text(
                           questions[counter].question,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.float,
                             fontWeight: FontWeight.bold,
                             fontSize: 24,
                           ),

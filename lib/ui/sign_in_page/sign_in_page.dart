@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iq_app/core/app_colors.dart';
 import 'package:iq_app/core/preference_services/preference_services.dart';
 import 'package:iq_app/core/roots/app_routes.dart';
 
@@ -26,7 +27,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.float,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -43,7 +44,7 @@ class _SignInPageState extends State<SignInPage> {
               //     "I love flutter",
               //     style: const NeumorphicStyle(
               //       depth: 4, //customize depth here
-              //       color: Colors.white, //customize color here
+              //       color: AppColors.float, //customize color here
               //     ),
               //     textStyle: NeumorphicTextStyle(
               //       fontSize: 18, //customize size here
@@ -108,7 +109,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Text(
                       'Save',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: AppColors.float,
                         fontWeight: FontWeight.bold,
                         fontSize: 20.sp,
                       ),

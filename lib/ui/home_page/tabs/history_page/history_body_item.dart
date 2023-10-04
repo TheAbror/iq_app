@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iq_app/core/app_colors.dart';
 
 class HistoryBodyItem extends StatelessWidget {
   final String index;
@@ -24,7 +25,7 @@ class HistoryBodyItem extends StatelessWidget {
           style: TextStyle(
             fontSize: 24.sp,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: AppColors.float,
           ),
         ),
       ),

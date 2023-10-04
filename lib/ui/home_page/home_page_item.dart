@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:iq_app/core/app_colors.dart';
 
 class HomePageItem extends StatelessWidget {
   final String text;
@@ -26,7 +27,7 @@ class HomePageItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.white),
+          border: Border.all(color: AppColors.float),
         ),
         child: Column(
           children: [
@@ -34,13 +35,13 @@ class HomePageItem extends StatelessWidget {
             Icon(
               icon,
               size: 60,
-              color: Colors.white,
+              color: AppColors.float,
             ),
             const SizedBox(height: 5),
             Text(
               text,
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.float,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
