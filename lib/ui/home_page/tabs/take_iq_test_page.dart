@@ -23,15 +23,9 @@ class _TakeIQTestState extends State<TakeIQTest> {
   List<Question> questions = [];
   List<Icon> icons = [];
 
-  void loadData() async {
+  Future<List<Question>> loadData() async {
     String jsonString = await rootBundle.loadString('assets/json_question.json');
-    questions = Question.fromJsonList(jsonString);
-  }
-
-  @override
-  void initState() {
-    loadData();
-    super.initState();
+    return Question.fromJsonList(jsonString);
   }
 
   @override
@@ -51,97 +45,96 @@ class _TakeIQTestState extends State<TakeIQTest> {
         ),
       ),
       body: SafeArea(
-        child: BlocProvider(
-          create: (context) => QuestionsBloc(),
-          child: BlocBuilder<QuestionsBloc, QuestionsState>(
-            builder: (context, state) {
-              if (questions.isEmpty) {
-                return const Center(
-                  child: CircularProgressIndicator(color: Colors.black),
-                );
-              }
-              if (state.blocProgress == BlocProgress.FAILED) {
-                return const SomethingWentWrong();
-              }
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                child: Column(
-                  children: [
-                    SizedBox(height: 30.h),
-                    Container(
-                      height: 300,
-                      width: double.infinity,
-                      padding: EdgeInsets.all(8.w),
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(8.r),
-                        border: Border.all(),
-                      ),
-                      child: Center(
-                        child: Text(
-                          questions[counter].question,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                          ),
-                          textAlign: TextAlign.center,
+          child: FutureBuilder<List<Question>>(
+        future: loadData(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return const SomethingWentWrong();
+          } else if (snapshot.hasData) {
+            questions = snapshot.data!;
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                children: [
+                  SizedBox(height: 30.h),
+                  Container(
+                    height: 300,
+                    width: double.infinity,
+                    padding: EdgeInsets.all(8.w),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(8.r),
+                      border: Border.all(),
+                    ),
+                    child: Center(
+                      child: Text(
+                        questions[counter].question,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
                         ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                    // Text(questions[0].question),
-                    SizedBox(height: 40.h),
-                    ListView.builder(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        itemCount: questions[0].options.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            title: AnwerItem(
-                              letter: '',
-                              text: questions[counter].options[index],
-                              // style: const TextStyle(fontWeight: FontWeight.w800),
-                            ),
-                            onTap: () {
-                              if (questions[counter].options[index] == questions[counter].answer) {
-                                print('correct');
-                                icons.add(
-                                  Icon(
-                                    Icons.done,
-                                    color: Colors.green.shade800,
-                                  ),
-                                );
-                              } else {
-                                print('wrong');
-                                icons.add(
-                                  Icon(
-                                    Icons.exposure_minus_1_outlined,
-                                    color: Colors.red.shade800,
-                                  ),
-                                );
-                              }
-                              if (counter + 1 < questions.length) {
-                                setState(() {
-                                  counter++;
-                                });
-                              }
-                            },
-                          );
-                        }),
-                    SizedBox(height: 40.h),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: icons,
-                    )
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-      ),
+                  ),
+                  SizedBox(height: 40.h),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    itemCount: questions[0].options.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        title: AnwerItem(
+                          letter: '',
+                          text: questions[counter].options[index],
+                        ),
+                        onTap: () {
+                          if (questions[counter].options[index] == questions[counter].answer) {
+                            print('correct');
+                            icons.add(
+                              Icon(
+                                Icons.done,
+                                color: Colors.green.shade800,
+                              ),
+                            );
+                          } else {
+                            print('wrong');
+                            icons.add(
+                              Icon(
+                                Icons.exposure_minus_1_outlined,
+                                color: Colors.red.shade800,
+                              ),
+                            );
+                          }
+                          if (counter + 1 < questions.length) {
+                            setState(() {
+                              counter++;
+                            });
+                          }
+                        },
+                      );
+                    },
+                  ),
+                  SizedBox(height: 40.h),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: icons,
+                  ),
+                  if (icons.length == questions.length) const Text('Your result: ')
+                ],
+              ),
+            );
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      )),
     );
   }
 }
