@@ -1,13 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:iq_app/core/bloc_progress.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app/core/something_went_wrong.dart';
-import 'package:iq_app/ui/home_page/tabs/bloc/questions_bloc.dart';
 import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/widgets/answer_item.dart';
+
 import '../question_modesl.dart';
 
 class TakeIQTest extends StatefulWidget {

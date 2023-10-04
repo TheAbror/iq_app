@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iq_app/core/preference_services/preference_services.dart';
 import 'package:iq_app/core/roots/app_routes.dart';
@@ -89,7 +88,9 @@ class _HomePageState extends State<HomePage> {
                   icon: Icons.data_object_outlined,
                   text: 'History',
                   color: const Color(0xff17181d),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.historyPage);
+                  },
                 ),
               ],
             ),
