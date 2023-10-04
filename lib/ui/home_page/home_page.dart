@@ -113,13 +113,16 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 HomePageItem(
                   icon: Icons.person_add_alt_1_outlined,
                   text: 'Profile ',
-                  color: Color(0xfffd830d),
+                  color: const Color(0xfffd830d),
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.profilePage);
+                  },
                 ),
-                HomePageItem(
+                const HomePageItem(
                   icon: Icons.adobe_outlined,
                   text: 'About',
                   color: Color(0xff13481d),
