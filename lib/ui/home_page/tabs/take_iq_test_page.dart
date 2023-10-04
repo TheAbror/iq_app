@@ -145,33 +145,3 @@ class _TakeIQTestState extends State<TakeIQTest> {
     );
   }
 }
-
-
-
-   // AnwerItem(
-                    //   letter: 'A) ',
-                    //   text: myAnswersList[counter],
-                    //   onTap: () {
-                    //     if (counter + 1 < myQuestionsList.length) {
-                    //       setState(() {
-                    //         counter++;
-                    //       });
-                    //     }
-                    //   },
-                    // );
-        //   },
-        // ),
-            // const AnwerItem(
-            //   letter: 'B) ',
-            //   text: 'France',
-            // ),
-            // const AnwerItem(
-            //   letter: 'C) ',
-            //   text: 'England',
-            // ),
-            // const AnwerItem(
-            //   letter: 'D) ',
-            //   text: 'USA',
-            // ),
-
-
