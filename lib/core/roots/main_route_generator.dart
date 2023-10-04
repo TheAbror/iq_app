@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:iq_app/core/roots/app_routes.dart';
 import 'package:iq_app/core/roots/custom_cupertino_route.dart';
 import 'package:iq_app/ui/home_page/home_page.dart';
-import 'package:iq_app/ui/home_page/tabs/take_iq_test_page.dart';
+import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/take_iq_test_page.dart';
 import 'package:iq_app/ui/sign_in_page/sign_in_page.dart';
 import 'package:iq_app/ui/splash_page/splash_page.dart';
 
