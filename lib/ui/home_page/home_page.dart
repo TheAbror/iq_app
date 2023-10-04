@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iq_app/core/preference_services/preference_services.dart';
 import 'package:iq_app/core/roots/app_routes.dart';
@@ -34,11 +35,11 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(150),
+        preferredSize: Size.fromHeight(150.h),
         child: Container(
-          height: 120,
+          height: 120.h,
           color: Colors.white,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,30 +50,30 @@ class _HomePageState extends State<HomePage> {
               ),
               SvgPicture.asset(
                 'assets/images/Component 3.svg',
-                height: 60,
+                height: 60.h,
               ),
             ],
           ),
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Text(
               'Hi ' '$name',
-              style: const TextStyle(fontSize: 24),
+              style: TextStyle(fontSize: 24.sp),
             ),
-            const Text(
+            Text(
               'Welcome to Dr.iQ',
               style: TextStyle(
-                fontSize: 28,
+                fontSize: 28.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 40),
+            SizedBox(height: 40.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -94,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -110,13 +111,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 HomePageItem(
                   icon: Icons.person_add_alt_1_outlined,
-                  text: 'Profile ',
+                  text: 'Profile  ',
                   color: const Color(0xfffd830d),
                   onTap: () {
                     Navigator.pushNamed(context, AppRoutes.profilePage);
