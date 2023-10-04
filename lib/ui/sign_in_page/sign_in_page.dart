@@ -39,7 +39,6 @@ class _SignInPageState extends State<SignInPage> {
                   'assets/images/Component 1.svg',
                   width: 350.w,
                   fit: BoxFit.fill,
-                  color: AppColors.textMain,
                 ),
               ),
               const SizedBox(height: 70),

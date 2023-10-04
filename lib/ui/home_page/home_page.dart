@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                 HomePageItem(
                   icon: Icons.person_add_alt_1_outlined,
                   text: 'Profile  ',
-                  color: const Color(0xfffd830d),
+                  color: AppColors.profileColor,
                   onTap: () {
                     Navigator.pushNamed(context, AppRoutes.profilePage);
                   },

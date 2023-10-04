@@ -44,7 +44,7 @@ class _Body extends StatelessWidget {
             height: 610.h,
             width: 430.w,
             decoration: BoxDecoration(
-              color: const Color(0xfffd830d),
+              color: AppColors.profileColor,
               borderRadius: BorderRadius.circular(25.r),
             ),
             alignment: Alignment.center,
@@ -85,7 +85,7 @@ class _Body extends StatelessWidget {
         Positioned(
           top: 140.h,
           child: CircleAvatar(
-            backgroundColor: const Color(0xfffd830d),
+            backgroundColor: AppColors.profileColor,
             radius: 70,
             child: Icon(
               Icons.person,
@@ -97,9 +97,7 @@ class _Body extends StatelessWidget {
         Positioned(
           top: 60.h,
           left: 20.w,
-          child: BackButton(
-            color: const Color(0xfffd830d),
-          ),
+          child: BackButton(color: AppColors.profileColor),
         ),
       ],
     );
