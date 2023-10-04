@@ -20,22 +20,62 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Row(
-              children: [
-                const Icon(Icons.person),
-                SizedBox(width: 20.w),
-                const Text(
-                  'Abror Shamuradov',
-                ),
-              ],
-            ),
+      body: _Body(),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: 200.h),
+        ProfileBodyItem(),
+        ProfileBodyItem(),
+        ProfileBodyItem(),
+        ProfileBodyItem(),
+      ],
+    );
+  }
+}
+
+class ProfileBodyItem extends StatelessWidget {
+  const ProfileBodyItem({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  const Icon(Icons.person),
+                  SizedBox(width: 30.w),
+                  const Text(
+                    'Abror Shamuradov',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+        const Divider(
+          color: Colors.black,
+        ),
+      ],
     );
   }
 }
