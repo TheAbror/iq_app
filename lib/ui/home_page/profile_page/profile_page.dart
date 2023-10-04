@@ -13,7 +13,8 @@ class ProfilePage extends StatelessWidget {
         elevation: 0,
         leading: const BackButton(color: Colors.black),
         title: const Text(
-          'Profile',
+          '',
+          // 'Profile',
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -32,21 +33,60 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
+      alignment: Alignment.center,
       children: [
-        SizedBox(height: 200.h),
-        ProfileBodyItem(),
-        ProfileBodyItem(),
-        ProfileBodyItem(),
-        ProfileBodyItem(),
+        Column(
+          children: [
+            SizedBox(height: 200.h),
+            ProfileBodyItem(text: 'Abror Shamuradov', icons: Icons.person),
+            ProfileBodyItem(text: 'Birthday', icons: Icons.calendar_month),
+            ProfileBodyItem(text: 'Phone', icons: Icons.phone),
+            ProfileBodyItem(text: 'Email', icons: Icons.email),
+            ProfileBodyItem(text: 'Facebook account', icons: Icons.facebook),
+          ],
+        ),
+        Positioned(
+          top: 113.h,
+          child: Container(
+            padding: EdgeInsets.all(2.h),
+            height: 90.h,
+            width: 90.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50.r),
+            ),
+            alignment: Alignment.center,
+            child: CircleAvatar(
+              radius: 130,
+            ),
+          ),
+        ),
+        Positioned(
+          top: 0.h,
+          child: Container(
+            padding: EdgeInsets.all(2.h),
+            height: 90.h,
+            width: 300.w,
+            decoration: BoxDecoration(
+              color: Colors.lightBlueAccent,
+              borderRadius: BorderRadius.circular(25.r),
+            ),
+            alignment: Alignment.center,
+          ),
+        ),
       ],
     );
   }
 }
 
 class ProfileBodyItem extends StatelessWidget {
+  final IconData icons;
+  final String text;
+
   const ProfileBodyItem({
     Key? key,
+    required this.icons,
+    required this.text,
   }) : super(key: key);
 
   @override
@@ -59,10 +99,10 @@ class ProfileBodyItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.person),
+                  Icon(icons),
                   SizedBox(width: 30.w),
-                  const Text(
-                    'Abror Shamuradov',
+                  Text(
+                    text,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
