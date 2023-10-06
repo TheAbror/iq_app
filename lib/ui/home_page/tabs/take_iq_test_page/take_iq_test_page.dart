@@ -5,9 +5,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app/core/app_colors.dart';
 import 'package:iq_app/core/something_went_wrong.dart';
+import 'package:iq_app/ui/home_page/tabs/question_modesl.dart';
 import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/widgets/answer_item.dart';
-
-import '../question_modesl.dart';
 
 class TakeIQTest extends StatefulWidget {
   const TakeIQTest({super.key});

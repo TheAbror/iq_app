@@ -55,13 +55,13 @@ class _SplashPageState extends State<SplashPage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             SizedBox(height: 250.h),
-            Center(
-              child: SvgPicture.asset(
-                'assets/images/Component 1.svg',
-                width: 350.w,
-                fit: BoxFit.fill,
-              ),
-            ),
+            // Center(
+            //   child: SvgPicture.asset(
+            //     'assets/images/Component 1.svg',
+            //     width: 350.w,
+            //     fit: BoxFit.fill,
+            //   ),
+            // ),
             SizedBox(height: 170.h),
             const Center(
               child: CircularProgressIndicator(color: AppColors.textMain),

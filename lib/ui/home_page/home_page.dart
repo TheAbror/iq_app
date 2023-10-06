@@ -44,15 +44,15 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: const [
               const CircleAvatar(
                 radius: 27,
                 backgroundImage: AssetImage('assets/images/avatar.jpeg'),
               ),
-              SvgPicture.asset(
-                'assets/images/Component 3.svg',
-                height: 60.h,
-              ),
+              // SvgPicture.asset(
+              //   'assets/images/Component 3.svg',
+              //   height: 60.h,
+              // ),
             ],
           ),
         ),
