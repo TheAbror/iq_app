@@ -17,9 +17,8 @@ class _$QuestionsService extends QuestionsService {
   final definitionType = QuestionsService;
 
   @override
-  Future<Response<List<QuestionsResponse>>> getTimetableInfo() {
-    final $url =
-        'http://192.168.100.9:9150/edulab_udea/api/v1/timetable/?groupID={group_id}&roomID={room_id}&teacherID={teacher_id}';
+  Future<Response<List<QuestionsResponse>>> getQuestions() {
+    final $url = 'assets/json_question.json';
     final $request = Request(
       'GET',
       $url,

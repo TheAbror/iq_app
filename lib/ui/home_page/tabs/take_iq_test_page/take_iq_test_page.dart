@@ -1,8 +1,9 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iq_app/core/app_colors.dart';
+import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/bloc/questions_bloc.dart';
 import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/model/questions_model.dart';
 
 class TakeIQTest extends StatefulWidget {
@@ -39,10 +40,16 @@ class _TakeIQTestState extends State<TakeIQTest> {
           ),
         ),
       ),
-      // body: SafeArea(
-      //     child: BlocBuilder<>(
-      //   builder: (context, state) {},
-      // )),
+      body: SafeArea(
+        child: BlocProvider(
+          create: (context) => QuestionsBloc()..getQuestions(),
+          child: BlocBuilder<QuestionsBloc, QuestionsState>(
+            builder: (context, state) {
+              return Container();
+            },
+          ),
+        ),
+      ),
     );
   }
 }
