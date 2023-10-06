@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:iq_app/core/app_colors.dart';
-import 'package:iq_app/ui/home_page/tabs/model/questions_model.dart';
+import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/model/questions_model.dart';
 
 class TakeIQTest extends StatefulWidget {
   const TakeIQTest({super.key});
