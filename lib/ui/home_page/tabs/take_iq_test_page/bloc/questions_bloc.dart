@@ -23,7 +23,7 @@ class QuestionsBloc extends Cubit<QuestionsState> {
     try {
       final jsonString = await rootBundle.loadString('assets/questions.json');
       final jsonList = json.decode(jsonString);
-      final questions = jsonList.map((json) => Question.fromJson(json)).toList();
+      final questions = jsonList.map((json) => QuestionsResponse.fromJson(json)).toList();
 
       if (jsonList != null) {
         emit(

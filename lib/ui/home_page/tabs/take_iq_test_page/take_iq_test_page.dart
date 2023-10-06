@@ -15,13 +15,13 @@ class TakeIQTest extends StatefulWidget {
 int counter = 0;
 
 class _TakeIQTestState extends State<TakeIQTest> {
-  List<Questions> questions = [];
+  List<QuestionsResponse> questions = [];
   List<Icon> icons = [];
 
-  Future<List<Question>> loadData() async {
-    String jsonString = await rootBundle.loadString('assets/json_question.json');
-    return Question.fromJsonList(jsonString);
-  }
+  // Future<List<QuestionsResponse>> loadData() async {
+  //   String jsonString = await rootBundle.loadString('assets/json_question.json');
+  //   return QuestionsResponse.fromJsonList(jsonString);
+  // }
 
   @override
   Widget build(BuildContext context) {
