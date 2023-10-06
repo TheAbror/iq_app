@@ -45,7 +45,7 @@ class QuestionsBloc extends Cubit<QuestionsState> {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final response = await ApiProvider.inquiryService.getCommentsList();
+      final response = await ApiProvider.questionsService.getQuestions();
 
       if (response.isSuccessful) {
         final data = response.body;
