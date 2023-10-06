@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iq_app/core/api/api_provider.dart';
 import 'package:iq_app/core/app_strings.dart';
+import 'package:iq_app/core/bloc_progress/bloc_progress.dart';
 import 'package:iq_app/core/bloc_progress/error.dart';
 import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/model/questions_model.dart';
 
@@ -73,5 +74,3 @@ class QuestionsBloc extends Cubit<QuestionsState> {
     }
   }
 }
-
-enum BlocProgress { NOT_STARTED, IS_LOADING, LOADED, FAILED, IS_SUCCESS }
