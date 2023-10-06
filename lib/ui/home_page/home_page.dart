@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:iq_app/core/app_colors.dart';
 import 'package:iq_app/core/preference_services/preference_services.dart';
 import 'package:iq_app/core/roots/app_routes.dart';
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: const [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 27,
                 backgroundImage: AssetImage('assets/images/avatar.jpeg'),
               ),
