@@ -3,7 +3,7 @@ part of 'questions_bloc.dart';
 class QuestionsState extends Equatable {
   final int counter;
   final List<Icon> icons;
-  final Question questions;
+  final List<QuestionsResponse> questions;
   final BlocProgress blocProgress;
   final String failureMessage;
 
@@ -19,11 +19,13 @@ class QuestionsState extends Equatable {
     return QuestionsState(
       counter: 0,
       icons: const [],
-      questions: Question(
-        question: '',
-        options: [],
-        answer: '',
-      ),
+      questions: [
+        QuestionsResponse(
+          question: '',
+          options: [],
+          answer: '',
+        ),
+      ],
       blocProgress: BlocProgress.IS_LOADING,
       failureMessage: '',
     );
@@ -32,7 +34,7 @@ class QuestionsState extends Equatable {
   QuestionsState copyWith({
     int? counter,
     List<Icon>? icons,
-    Question? questions,
+    List<QuestionsResponse>? questions,
     BlocProgress? blocProgress,
     String? failureMessage,
   }) {
