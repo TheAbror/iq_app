@@ -50,4 +50,10 @@ class QuestionsBloc extends Cubit<QuestionsState> {
       ));
     }
   }
+
+  void increaseCounter() {
+    var stateCounter = state.counter;
+    var increaseC = stateCounter + 1;
+    emit(state.copyWith(counter: increaseC));
+  }
 }

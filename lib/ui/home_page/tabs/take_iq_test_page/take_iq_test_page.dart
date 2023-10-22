@@ -1,4 +1,3 @@
-// ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +13,13 @@ class TakeIQTest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.textMain,
+        title: Text(
+          'IQ Test',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -28,11 +34,14 @@ class TakeIQTest extends StatelessWidget {
                 if (state.blocProgress == BlocProgress.FAILED) {
                   return const SomethingWentWrong();
                 }
+
+                final counter = state.counter;
                 return Column(
                   children: [
-                    SizedBox(
-                      height: 600,
-                      child: ListView.builder(
+                    SizedBox(height: 20.h),
+                    Expanded(
+                      flex: 2,
+                      child: PageView.builder(
                         itemCount: state.questions.length,
                         itemBuilder: (context, index) {
                           return Column(
@@ -47,7 +56,7 @@ class TakeIQTest extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    state.questions[index].question,
+                                    state.questions[counter].question,
                                     style: const TextStyle(
                                       color: AppColors.float,
                                       fontWeight: FontWeight.bold,
@@ -57,26 +66,58 @@ class TakeIQTest extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              state.questions[index].options[index].isCorrect
-                                  ? Text(
-                                      state.questions[index].options[index].option,
-                                      style: const TextStyle(
-                                        color: AppColors.emirald,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 24,
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: state.questions[counter].options.length,
+                                itemBuilder: (context, optionIndex) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      context.read<QuestionsBloc>().increaseCounter();
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(vertical: 8.h),
+                                      padding: EdgeInsets.all(8.w),
+                                      decoration: BoxDecoration(
+                                        color: AppColors.textMain,
+                                        borderRadius: BorderRadius.circular(8.r),
+                                        border: Border.all(),
                                       ),
-                                      textAlign: TextAlign.center,
-                                    )
-                                  : Text('incorrect')
+                                      child: Text(
+                                        state.questions[index].options[optionIndex].option,
+                                        style: const TextStyle(
+                                          color: AppColors.emirald,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 24,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                             ],
                           );
                         },
                       ),
                     ),
-                    SizedBox(height: 30.h),
+                  ],
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
-                    SizedBox(height: 40.h),
-                    // ListView.builder(
+
+
+
+
+
+ // ListView.builder(
                     //   shrinkWrap: true,
                     //   padding: EdgeInsets.zero,
                     //   itemCount: questions[0].options.length,
@@ -115,19 +156,10 @@ class TakeIQTest extends StatelessWidget {
                     //     );
                     //   },
                     // ),
-                    SizedBox(height: 40.h),
-                    // Row(
+
+
+                     // Row(
                     //   crossAxisAlignment: CrossAxisAlignment.end,
                     //   children: icons,
                     // ),
                     // if (icons.length == questions.length) const Text('Your result: ')
-                  ],
-                );
-              },
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
