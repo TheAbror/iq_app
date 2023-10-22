@@ -36,70 +36,35 @@ class TakeIQTest extends StatelessWidget {
                 }
 
                 final counter = state.counter;
+                final iconsList = state.icons;
+
                 return Column(
                   children: [
                     SizedBox(height: 20.h),
                     Expanded(
-                      flex: 2,
+                      flex: 3,
                       child: PageView.builder(
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: state.questions.length,
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
-                              Container(
-                                width: double.infinity,
-                                padding: EdgeInsets.all(8.w),
-                                decoration: BoxDecoration(
-                                  color: AppColors.textMain,
-                                  borderRadius: BorderRadius.circular(8.r),
-                                  border: Border.all(),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    state.questions[counter].question,
-                                    style: const TextStyle(
-                                      color: AppColors.float,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
+                              QuestionText(
+                                counter: counter,
+                                state: state,
                               ),
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: state.questions[counter].options.length,
-                                itemBuilder: (context, optionIndex) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      context.read<QuestionsBloc>().increaseCounter();
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.symmetric(vertical: 8.h),
-                                      padding: EdgeInsets.all(8.w),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.textMain,
-                                        borderRadius: BorderRadius.circular(8.r),
-                                        border: Border.all(),
-                                      ),
-                                      child: Text(
-                                        state.questions[index].options[optionIndex].option,
-                                        style: const TextStyle(
-                                          color: AppColors.emirald,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  );
-                                },
+                              OptionsText(
+                                counter: counter,
+                                state: state,
                               ),
                             ],
                           );
                         },
                       ),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: iconsList,
                     ),
                   ],
                 );
@@ -112,54 +77,129 @@ class TakeIQTest extends StatelessWidget {
   }
 }
 
+class OptionsText extends StatelessWidget {
+  final int counter;
+  final QuestionsState state;
+
+  const OptionsText({
+    super.key,
+    required this.counter,
+    required this.state,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: state.questions[counter].options.length,
+      itemBuilder: (context, optionIndex) {
+        return Builder(builder: (context) {
+          return GestureDetector(
+            onTap: () {
+              context.read<QuestionsBloc>().increaseCounter();
+              context.read<QuestionsBloc>().isCorrect(optionIndex);
+            },
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 8.h),
+              padding: EdgeInsets.all(8.w),
+              decoration: BoxDecoration(
+                color: AppColors.textMain,
+                borderRadius: BorderRadius.circular(8.r),
+                border: Border.all(),
+              ),
+              child: Text(
+                state.questions[counter].options[optionIndex].option,
+                style: const TextStyle(
+                  color: AppColors.emirald,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          );
+        });
+      },
+    );
+  }
+}
+
+class QuestionText extends StatelessWidget {
+  final int counter;
+  final QuestionsState state;
+
+  const QuestionText({
+    super.key,
+    required this.counter,
+    required this.state,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 300.h,
+      width: double.infinity,
+      padding: EdgeInsets.all(8.w),
+      decoration: BoxDecoration(
+        color: AppColors.textMain,
+        borderRadius: BorderRadius.circular(8.r),
+        border: Border.all(),
+      ),
+      child: Center(
+        child: Text(
+          state.questions[counter].question,
+          style: const TextStyle(
+            color: AppColors.float,
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+}
+
+//  ListView.builder(
+//                       shrinkWrap: true,
+//                       padding: EdgeInsets.zero,
+//                       itemCount: questions[0].options.length,
+//                       physics: const NeverScrollableScrollPhysics(),
+//                       itemBuilder: (context, index) {
+//                         return ListTile(
+//                           contentPadding: EdgeInsets.zero,
+//                           title: AnwerItem(
+//                             letter: '',
+//                             text: questions[counter].options[index],
+//                           ),
+//                           onTap: () {
+//                             if (questions[counter].options[index] == questions[counter].answer) {
+//                               print('correct');
+//                               icons.add(
+//                                 Icon(
+//                                   Icons.done,
+//                                   color: Colors.green.shade800,
+//                                 ),
+//                               );
+//                             } else {
+//                               print('wrong');
+//                               icons.add(
+//                                 Icon(
+//                                   Icons.exposure_minus_1_outlined,
+//                                   color: Colors.red.shade800,
+//                                 ),
+//                               );
+//                             }
+//                             if (counter + 1 < questions.length) {
+//                               setState(() {
+//                                 counter++;
+//                               });
+//                             }
+//                           },
+//                         );
+//                       },
+//                     ),
 
 
-
-
-
- // ListView.builder(
-                    //   shrinkWrap: true,
-                    //   padding: EdgeInsets.zero,
-                    //   itemCount: questions[0].options.length,
-                    //   physics: const NeverScrollableScrollPhysics(),
-                    //   itemBuilder: (context, index) {
-                    //     return ListTile(
-                    //       contentPadding: EdgeInsets.zero,
-                    //       title: AnwerItem(
-                    //         letter: '',
-                    //         text: questions[counter].options[index],
-                    //       ),
-                    //       onTap: () {
-                    //         if (questions[counter].options[index] == questions[counter].answer) {
-                    //           print('correct');
-                    //           icons.add(
-                    //             Icon(
-                    //               Icons.done,
-                    //               color: Colors.green.shade800,
-                    //             ),
-                    //           );
-                    //         } else {
-                    //           print('wrong');
-                    //           icons.add(
-                    //             Icon(
-                    //               Icons.exposure_minus_1_outlined,
-                    //               color: Colors.red.shade800,
-                    //             ),
-                    //           );
-                    //         }
-                    //         if (counter + 1 < questions.length) {
-                    //           setState(() {
-                    //             counter++;
-                    //           });
-                    //         }
-                    //       },
-                    //     );
-                    //   },
-                    // ),
-
-
-                     // Row(
-                    //   crossAxisAlignment: CrossAxisAlignment.end,
-                    //   children: icons,
-                    // ),
-                    // if (icons.length == questions.length) const Text('Your result: ')
+// if (icons.length == questions.length) const Text('Your result: ')

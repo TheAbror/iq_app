@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iq_app_mobile/core/api/api_provider.dart';
+import 'package:iq_app_mobile/core/app_colors.dart';
 import 'package:iq_app_mobile/core/app_strings.dart';
 import 'package:iq_app_mobile/core/bloc_progress/bloc_progress.dart';
 import 'package:iq_app_mobile/core/bloc_progress/error.dart';
@@ -55,5 +56,27 @@ class QuestionsBloc extends Cubit<QuestionsState> {
     var stateCounter = state.counter;
     var increaseC = stateCounter + 1;
     emit(state.copyWith(counter: increaseC));
+  }
+
+  void isCorrect(int optionIndex) {
+    List<Icon> listOfIcons = [];
+
+    if (state.options[optionIndex].isCorrect) {
+      listOfIcons.add(
+        Icon(
+          Icons.done,
+          color: AppColors.success,
+        ),
+      );
+    } else {
+      listOfIcons.add(
+        Icon(
+          Icons.error,
+          color: AppColors.warning,
+        ),
+      );
+    }
+
+    emit(state.copyWith(icons: listOfIcons));
   }
 }
