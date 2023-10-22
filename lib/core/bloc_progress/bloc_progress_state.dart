@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:iq_app/core/bloc_progress/bloc_progress.dart';
+import 'package:iq_app_mobile/core/bloc_progress/bloc_progress.dart';
 
 abstract class BlocProgressState extends Equatable {
   final BlocProgress blocProgress;

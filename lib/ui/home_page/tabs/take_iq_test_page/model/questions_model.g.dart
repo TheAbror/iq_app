@@ -8,17 +8,25 @@ part of 'questions_model.dart';
 
 QuestionsResponse _$QuestionsResponseFromJson(Map<String, dynamic> json) =>
     QuestionsResponse(
-      question: json['question'] as String? ?? '',
+      question: json['question_text'] as String? ?? '',
       options: (json['options'] as List<dynamic>?)
-              ?.map((e) => e as String)
+              ?.map((e) => Options.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
-      answer: json['answer'] as String? ?? '',
     );
 
 Map<String, dynamic> _$QuestionsResponseToJson(QuestionsResponse instance) =>
     <String, dynamic>{
-      'question': instance.question,
-      'options': instance.options,
-      'answer': instance.answer,
+      'question_text': instance.question,
+      'options': instance.options.map((e) => e.toJson()).toList(),
+    };
+
+Options _$OptionsFromJson(Map<String, dynamic> json) => Options(
+      option: json['option_text'] as String? ?? '',
+      isCorrect: json['is_correct'] as bool,
+    );
+
+Map<String, dynamic> _$OptionsToJson(Options instance) => <String, dynamic>{
+      'option_text': instance.option,
+      'is_correct': instance.isCorrect,
     };

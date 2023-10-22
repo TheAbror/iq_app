@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iq_app/ui/splash_page/splash_auth_status.dart';
+import 'package:iq_app_mobile/ui/splash_page/splash_auth_status.dart';
 
 class SplashBloc extends Cubit<SplashAuthStatus> {
   SplashBloc() : super(SplashAuthStatus.initial);

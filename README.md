@@ -1,4 +1,4 @@
-# iq_app
+# iq_app_mobile
 
 A new Flutter project.
 

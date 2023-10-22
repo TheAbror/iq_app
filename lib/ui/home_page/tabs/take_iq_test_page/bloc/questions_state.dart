@@ -23,7 +23,6 @@ class QuestionsState extends Equatable {
         QuestionsResponse(
           question: '',
           options: [],
-          answer: '',
         ),
       ],
       blocProgress: BlocProgress.IS_LOADING,

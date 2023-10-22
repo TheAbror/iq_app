@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iq_app/core/app_colors.dart';
-import 'package:iq_app/ui/home_page/tabs/history_page/clear_history_dialog.dart';
-import 'package:iq_app/ui/home_page/tabs/history_page/history_body_item.dart';
+import 'package:iq_app_mobile/core/app_colors.dart';
+import 'package:iq_app_mobile/ui/home_page/tabs/history_page/clear_history_dialog.dart';
+import 'package:iq_app_mobile/ui/home_page/tabs/history_page/history_body_item.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});

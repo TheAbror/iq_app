@@ -1,10 +1,10 @@
 import 'package:chopper/chopper.dart';
-import 'package:iq_app/ui/home_page/tabs/take_iq_test_page/model/questions_model.dart';
+import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/model/questions_model.dart';
 
 class CustomDataConverter extends JsonConverter {
   @override
-  Response<BodyType> convertResponse<BodyType, InnerType>(Response response) {
-    final Response dynamicResponse = super.convertResponse(response);
+  Future<Response<BodyType>> convertResponse<BodyType, InnerType>(Response response) async {
+    final Response<dynamic> dynamicResponse = await super.convertResponse(response);
 
     var body = dynamicResponse.body;
 
@@ -14,33 +14,33 @@ class CustomDataConverter extends JsonConverter {
       body: customBody,
     );
   }
+}
 
-  BodyType convertToCustomObject<BodyType, SingleItemType>(dynamic element) {
-    if (element is List) {
-      return deserializeListOf<BodyType, SingleItemType>(element);
-    } else {
-      return deserialize<SingleItemType>(element);
-    }
+BodyType convertToCustomObject<BodyType, SingleItemType>(dynamic element) {
+  if (element is List) {
+    return deserializeListOf<BodyType, SingleItemType>(element);
+  } else {
+    return deserialize<SingleItemType>(element);
   }
+}
 
-  dynamic deserializeListOf<BodyType, SingleItemType>(
-    List dynamicList,
-  ) {
-    List<SingleItemType> list =
-        dynamicList.map<SingleItemType>((element) => deserialize<SingleItemType>(element)).toList();
-    return list;
-  }
+dynamic deserializeListOf<BodyType, SingleItemType>(
+  List dynamicList,
+) {
+  List<SingleItemType> list =
+      dynamicList.map<SingleItemType>((element) => deserialize<SingleItemType>(element)).toList();
+  return list;
+}
 
-  dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
-    switch (SingleItemType) {
-      case int:
-        return int;
+dynamic deserialize<SingleItemType>(Map<String, dynamic> json) {
+  switch (SingleItemType) {
+    case int:
+      return int;
 
-      case QuestionsResponse:
-        return QuestionsResponse.fromJson(json);
+    case QuestionsResponse:
+      return QuestionsResponse.fromJson(json);
 
-      default:
-        return null;
-    }
+    default:
+      return null;
   }
 }

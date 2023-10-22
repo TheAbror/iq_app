@@ -1,4 +1,4 @@
-import 'package:iq_app/core/preference_services/sh_pref_keys.dart';
+import 'package:iq_app_mobile/core/preference_services/sh_pref_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesServices {

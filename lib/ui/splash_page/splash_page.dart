@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iq_app/core/app_colors.dart';
-import 'package:iq_app/core/roots/app_routes.dart';
-import 'package:iq_app/ui/splash_page/bloc/splash_bloc.dart';
-import 'package:iq_app/ui/splash_page/splash_auth_status.dart';
+import 'package:iq_app_mobile/core/app_colors.dart';
+import 'package:iq_app_mobile/core/roots/app_routes.dart';
+import 'package:iq_app_mobile/ui/splash_page/bloc/splash_bloc.dart';
+import 'package:iq_app_mobile/ui/splash_page/splash_auth_status.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

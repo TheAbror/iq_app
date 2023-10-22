@@ -6,8 +6,8 @@ part of 'questions_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
-// ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations, unnecessary_brace_in_string_interps
-class _$QuestionsService extends QuestionsService {
+// ignore_for_file: type=lint
+final class _$QuestionsService extends QuestionsService {
   _$QuestionsService([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
@@ -18,8 +18,8 @@ class _$QuestionsService extends QuestionsService {
 
   @override
   Future<Response<List<QuestionsResponse>>> getQuestions() {
-    final $url = 'assets/json_question.json';
-    final $request = Request(
+    final Uri $url = Uri.parse('http://127.0.0.1:8000/questions/');
+    final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,

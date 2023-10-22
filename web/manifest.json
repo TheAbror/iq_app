@@ -1,6 +1,6 @@
 {
-    "name": "iq_app",
-    "short_name": "iq_app",
+    "name": "iq_app_mobile",
+    "short_name": "iq_app_mobile",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
