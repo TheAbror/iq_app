@@ -30,6 +30,11 @@ dependencies:
 
   logging: ^1.2.0
 
+  rive: ^0.11.17
+
+  intl: ^0.18.1
+
+
 
 dev_dependencies:
   flutter_test:
@@ -50,4 +55,4 @@ flutter:
   fonts:
     - family: Raleway
       fonts:
-        - asset: assets/fonts/Raleway/Raleway-VariableFont_wght.ttf
+        - asset: assets/fonts/Raleway/static/Raleway-Bold.ttf

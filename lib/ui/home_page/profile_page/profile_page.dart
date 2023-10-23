@@ -58,7 +58,7 @@ class _Body extends StatelessWidget {
             ProfileBodyItem(text: 'Phone', icons: Icons.phone),
             ProfileBodyItem(text: 'Email', icons: Icons.email),
             ProfileBodyItem(text: 'Facebook account', icons: Icons.facebook),
-            SizedBox(height: 150.h),
+            SizedBox(height: 130.h),
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(left: 16.w, right: 16.w),

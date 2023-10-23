@@ -61,6 +61,7 @@ class QuestionsBloc extends Cubit<QuestionsState> {
 
   void isCorrect(int counter, int questionCounter) {
     var stateIcons = List<Icon>.from(state.icons);
+    var stateResults = state.result;
     if ((counter + 1) < questionCounter) {
       stateIcons.add(
         Icon(
@@ -70,7 +71,9 @@ class QuestionsBloc extends Cubit<QuestionsState> {
         ),
       );
     }
-    emit(state.copyWith(icons: stateIcons));
+    var asd = stateResults + 1;
+
+    emit(state.copyWith(icons: stateIcons, result: asd));
   }
 
   void isInCorrect(int counter, int questionCounter) {

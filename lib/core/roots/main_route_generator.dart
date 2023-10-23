@@ -25,7 +25,7 @@ class MainRouteGenerator {
         );
       case AppRoutes.takeiqtest:
         return CustomCupertinoStyleNavigationRoute(
-          builder: (_) => const TakeIQTest(),
+          builder: (_) => TakeIQTest(),
         );
       case AppRoutes.historyPage:
         return CustomCupertinoStyleNavigationRoute(

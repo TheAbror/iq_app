@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
 import 'package:iq_app_mobile/core/bloc_progress/bloc_progress.dart';
 import 'package:iq_app_mobile/core/primary_loader.dart';
 import 'package:iq_app_mobile/core/something_went_wrong.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/bloc/questions_bloc.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/question_text.dart';
+import 'package:rive/rive.dart';
 
 // var questionCounter = state.questions.length;
 //                 var myCounter = state.counter + 7;
-class TakeIQTest extends StatelessWidget {
-  const TakeIQTest({super.key});
+class TakeIQTest extends StatefulWidget {
+  @override
+  State<TakeIQTest> createState() => _TakeIQTestState();
+}
+
+class _TakeIQTestState extends State<TakeIQTest> {
+  final _dateFormatter = DateFormat('dd-MM-yyyy, HH:mm');
 
   @override
   Widget build(BuildContext context) {
+    final today = DateTime.now();
+    var formattedDate = _dateFormatter.format(today);
+
+    print(formattedDate);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.textMain,
@@ -30,7 +41,7 @@ class TakeIQTest extends StatelessWidget {
             create: (context) => QuestionsBloc()..getQuestions(),
             child: BlocConsumer<QuestionsBloc, QuestionsState>(
               listener: (context, state) async {
-                if (state.questions.length == (state.counter + 1))
+                if (state.questions.length == (state.counter + 1)) {
                   showDialog(
                     context: context,
                     builder: (BuildContext dialogContext) {
@@ -38,22 +49,59 @@ class TakeIQTest extends StatelessWidget {
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
-                            const Text('This is a typical dialog.'),
+                            Center(
+                              child: const Text(
+                                'Congratulations!!!',
+                                style: TextStyle(
+                                  color: AppColors.textMain,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 390.h,
+                              width: 300.w,
+                              child: const RiveAnimation.asset('assets/images/5103-10277-handshake.riv'),
+                            ),
                             const SizedBox(height: 15),
+                            Center(
+                              child: Text(
+                                '${state.result.toString()} out of ${state.questions.length}',
+                                style: TextStyle(
+                                  color: AppColors.textMain,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30.sp,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 35),
                             TextButton(
                               onPressed: () {
                                 Navigator.pop(dialogContext);
                                 Navigator.pop(dialogContext);
+                                // Navigator.pop(context);
                               },
-                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),
-                              child: const Text('Close'),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                  AppColors.textMain,
+                                ),
+                              ),
+                              child: const Text(
+                                'Close',
+                                style: TextStyle(
+                                  color: AppColors.float,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ],
                         ),
                       );
                     },
                   );
+                }
               },
               builder: (context, state) {
                 if (state.blocProgress == BlocProgress.IS_LOADING) {
@@ -92,6 +140,8 @@ class TakeIQTest extends StatelessWidget {
                                 counter: counter,
                                 state: state,
                               ),
+                              SizedBox(height: 100.h),
+                              Text(formattedDate),
                             ],
                           );
                         },
