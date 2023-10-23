@@ -84,7 +84,7 @@ class TakeIQTest extends StatelessWidget {
   }
 }
 
-class OptionsText extends StatelessWidget {
+class OptionsText extends StatefulWidget {
   final int counter;
   final QuestionsState state;
 
@@ -95,40 +95,58 @@ class OptionsText extends StatelessWidget {
   });
 
   @override
+  State<OptionsText> createState() => _OptionsTextState();
+}
+
+class _OptionsTextState extends State<OptionsText> {
+  @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: state.questions[counter].options.length,
+      itemCount: widget.state.questions[widget.counter].options.length,
       itemBuilder: (context, optionIndex) {
-        return Builder(builder: (context) {
-          var questionCounter = state.questions.length;
-          print(questionCounter);
-          return GestureDetector(
-            onTap: () {
-              context.read<QuestionsBloc>().increaseCounter(counter, questionCounter);
-              context.read<QuestionsBloc>().isCorrect(optionIndex);
-            },
-            child: Container(
-              margin: EdgeInsets.symmetric(vertical: 8.h),
-              padding: EdgeInsets.all(8.w),
-              decoration: BoxDecoration(
-                color: AppColors.textMain,
-                borderRadius: BorderRadius.circular(8.r),
-                border: Border.all(),
-              ),
-              child: Text(
-                state.questions[counter].options[optionIndex].option,
-                style: const TextStyle(
-                  color: AppColors.emirald,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
+        int? selectedOptionIndex;
+        return Builder(
+          builder: (context) {
+            var questionCounter = widget.state.questions.length;
+            return GestureDetector(
+              onTap: () {
+                context.read<QuestionsBloc>().increaseCounter(widget.counter, questionCounter);
+                setState(() {
+                  selectedOptionIndex = optionIndex;
+                });
+                var abc = widget.state.questions[widget.counter].options[selectedOptionIndex ?? 0].option;
+                var abcBool = widget.state.questions[widget.counter].options[selectedOptionIndex ?? 0].isCorrect;
+                print('Selected value: $abc');
+                print('$abcBool');
+                if (abcBool) {
+                  context.read<QuestionsBloc>().isCorrect(widget.counter, questionCounter);
+                } else {
+                  context.read<QuestionsBloc>().isInCorrect(widget.counter, questionCounter);
+                }
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 8.h),
+                padding: EdgeInsets.all(8.w),
+                decoration: BoxDecoration(
+                  color: AppColors.textMain,
+                  borderRadius: BorderRadius.circular(8.r),
+                  border: Border.all(),
                 ),
-                textAlign: TextAlign.center,
+                child: Text(
+                  widget.state.questions[widget.counter].options[optionIndex].option,
+                  style: const TextStyle(
+                    color: AppColors.emirald,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-          );
-        });
+            );
+          },
+        );
       },
     );
   }

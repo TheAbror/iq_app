@@ -1,7 +1,5 @@
 // ignore_for_file: constant_identifier_names
-
 import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,25 +58,29 @@ class QuestionsBloc extends Cubit<QuestionsState> {
     }
   }
 
-  void isCorrect(int optionIndex) {
-    List<Icon> listOfIcons = [];
+  void isCorrect(int counter, int questionCounter) {
+    var stateIcons = List<Icon>.from(state.icons);
+    if ((counter + 1) < questionCounter) {
+      stateIcons.add(
+        Icon(
+          Icons.done,
+          color: AppColors.success,
+        ),
+      );
+    }
+    emit(state.copyWith(icons: stateIcons));
+  }
 
-    // if (state.options[optionIndex].isCorrect) {
-    //   listOfIcons.add(
-    //     Icon(
-    //       Icons.done,
-    //       color: AppColors.success,
-    //     ),
-    //   );
-    // } else {
-    //   listOfIcons.add(
-    //     Icon(
-    //       Icons.error,
-    //       color: AppColors.warning,
-    //     ),
-    //   );
-    // }
-
-    emit(state.copyWith(icons: listOfIcons));
+  void isInCorrect(int counter, int questionCounter) {
+    var stateIcons = List<Icon>.from(state.icons);
+    if ((counter + 1) < questionCounter) {
+      stateIcons.add(
+        Icon(
+          Icons.error,
+          color: AppColors.warning,
+        ),
+      );
+    }
+    emit(state.copyWith(icons: stateIcons));
   }
 }
