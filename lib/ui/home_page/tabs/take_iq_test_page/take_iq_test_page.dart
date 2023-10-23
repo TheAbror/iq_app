@@ -46,6 +46,7 @@ class TakeIQTest extends StatelessWidget {
                                 Navigator.pop(dialogContext);
                                 Navigator.pop(dialogContext);
                               },
+                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.red)),
                               child: const Text('Close'),
                             ),
                           ],
