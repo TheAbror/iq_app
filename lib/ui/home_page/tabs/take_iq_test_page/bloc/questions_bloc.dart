@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/api/api_provider.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
 import 'package:iq_app_mobile/core/app_strings.dart';
@@ -65,6 +66,7 @@ class QuestionsBloc extends Cubit<QuestionsState> {
         Icon(
           Icons.done,
           color: AppColors.success,
+          size: 40.sp,
         ),
       );
     }
@@ -77,7 +79,8 @@ class QuestionsBloc extends Cubit<QuestionsState> {
       stateIcons.add(
         Icon(
           Icons.error,
-          color: AppColors.warning,
+          color: AppColors.error,
+          size: 40.sp,
         ),
       );
     }

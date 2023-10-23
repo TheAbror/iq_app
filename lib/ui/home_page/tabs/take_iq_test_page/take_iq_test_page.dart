@@ -8,6 +8,8 @@ import 'package:iq_app_mobile/core/something_went_wrong.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/bloc/questions_bloc.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/question_text.dart';
 
+// var questionCounter = state.questions.length;
+//                 var myCounter = state.counter + 7;
 class TakeIQTest extends StatelessWidget {
   const TakeIQTest({super.key});
 
@@ -26,7 +28,32 @@ class TakeIQTest extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: BlocProvider(
             create: (context) => QuestionsBloc()..getQuestions(),
-            child: BlocBuilder<QuestionsBloc, QuestionsState>(
+            child: BlocConsumer<QuestionsBloc, QuestionsState>(
+              listener: (context, state) async {
+                if (state.questions.length == (state.counter + 1))
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext dialogContext) {
+                      return AlertDialog(
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Text('This is a typical dialog.'),
+                            const SizedBox(height: 15),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(dialogContext);
+                                Navigator.pop(dialogContext);
+                              },
+                              child: const Text('Close'),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+              },
               builder: (context, state) {
                 if (state.blocProgress == BlocProgress.IS_LOADING) {
                   return const PrimaryLoader();
