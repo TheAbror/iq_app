@@ -52,30 +52,32 @@ class QuestionsBloc extends Cubit<QuestionsState> {
     }
   }
 
-  void increaseCounter() {
-    var stateCounter = state.counter;
-    var increaseC = stateCounter + 1;
-    emit(state.copyWith(counter: increaseC));
+  void increaseCounter(int counter, int questionCounter) {
+    if ((counter + 1) < questionCounter) {
+      var stateCounter = state.counter;
+      var increaseC = stateCounter + 1;
+      emit(state.copyWith(counter: increaseC));
+    }
   }
 
   void isCorrect(int optionIndex) {
     List<Icon> listOfIcons = [];
 
-    if (state.options[optionIndex].isCorrect) {
-      listOfIcons.add(
-        Icon(
-          Icons.done,
-          color: AppColors.success,
-        ),
-      );
-    } else {
-      listOfIcons.add(
-        Icon(
-          Icons.error,
-          color: AppColors.warning,
-        ),
-      );
-    }
+    // if (state.options[optionIndex].isCorrect) {
+    //   listOfIcons.add(
+    //     Icon(
+    //       Icons.done,
+    //       color: AppColors.success,
+    //     ),
+    //   );
+    // } else {
+    //   listOfIcons.add(
+    //     Icon(
+    //       Icons.error,
+    //       color: AppColors.warning,
+    //     ),
+    //   );
+    // }
 
     emit(state.copyWith(icons: listOfIcons));
   }

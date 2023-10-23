@@ -6,6 +6,7 @@ import 'package:iq_app_mobile/core/bloc_progress/bloc_progress.dart';
 import 'package:iq_app_mobile/core/primary_loader.dart';
 import 'package:iq_app_mobile/core/something_went_wrong.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/bloc/questions_bloc.dart';
+import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/question_text.dart';
 
 class TakeIQTest extends StatelessWidget {
   const TakeIQTest({super.key});
@@ -16,7 +17,7 @@ class TakeIQTest extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.textMain,
         title: Text(
-          'IQ Test',
+          'Test',
           style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
         ),
       ),
@@ -53,6 +54,12 @@ class TakeIQTest extends StatelessWidget {
                                 counter: counter,
                                 state: state,
                               ),
+                              SizedBox(height: 20.h),
+                              Divider(
+                                thickness: 1,
+                                height: 1,
+                              ),
+                              SizedBox(height: 10.h),
                               OptionsText(
                                 counter: counter,
                                 state: state,
@@ -95,9 +102,11 @@ class OptionsText extends StatelessWidget {
       itemCount: state.questions[counter].options.length,
       itemBuilder: (context, optionIndex) {
         return Builder(builder: (context) {
+          var questionCounter = state.questions.length;
+          print(questionCounter);
           return GestureDetector(
             onTap: () {
-              context.read<QuestionsBloc>().increaseCounter();
+              context.read<QuestionsBloc>().increaseCounter(counter, questionCounter);
               context.read<QuestionsBloc>().isCorrect(optionIndex);
             },
             child: Container(
@@ -121,42 +130,6 @@ class OptionsText extends StatelessWidget {
           );
         });
       },
-    );
-  }
-}
-
-class QuestionText extends StatelessWidget {
-  final int counter;
-  final QuestionsState state;
-
-  const QuestionText({
-    super.key,
-    required this.counter,
-    required this.state,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 300.h,
-      width: double.infinity,
-      padding: EdgeInsets.all(8.w),
-      decoration: BoxDecoration(
-        color: AppColors.textMain,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(),
-      ),
-      child: Center(
-        child: Text(
-          state.questions[counter].question,
-          style: const TextStyle(
-            color: AppColors.float,
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ),
     );
   }
 }
