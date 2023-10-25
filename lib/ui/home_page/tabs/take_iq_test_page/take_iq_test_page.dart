@@ -150,22 +150,20 @@ class _TakeIQTestState extends State<TakeIQTest> {
                   print(formattedDate);
                   var preferencesServices = PreferencesServices();
 
-                  List<String>? existingList = await preferencesServices.getStringList(ShPrefKeys.resultList);
+                  List<String>? existingResultsList = await preferencesServices.getStringList(ShPrefKeys.resultList);
                   List<String>? existingDateList = await preferencesServices.getStringList(ShPrefKeys.dateList);
-                  if (existingList != null) {
-                    existingList.add(resultOfTest);
-                    // existingDateList.add(formattedDate);
+                  if (existingResultsList != null) {
+                    existingResultsList.add(resultOfTest);
                   } else {
-                    existingList = [resultOfTest];
+                    existingResultsList = [resultOfTest];
                   }
                   //
                   if (existingDateList != null) {
                     existingDateList.add(formattedDate);
-                    // existingDateList.add(formattedDate);
                   } else {
                     existingDateList = [formattedDate];
                   }
-                  await preferencesServices.saveStringList(existingList);
+                  await preferencesServices.saveStringList(existingResultsList);
                   await preferencesServices.saveDatesList(existingDateList);
                 },
                 style: ButtonStyle(

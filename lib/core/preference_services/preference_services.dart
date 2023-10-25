@@ -32,6 +32,12 @@ class PreferencesServices {
     await prefs.setStringList(ShPrefKeys.resultList, stringList);
   }
 
+  Future<List<String>> getStringList(String resultList) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> stringList = prefs.getStringList(ShPrefKeys.resultList) ?? [];
+    return stringList;
+  }
+
   Future<void> saveDatesList(List<String> stringList) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setStringList(ShPrefKeys.dateList, stringList);
@@ -40,12 +46,6 @@ class PreferencesServices {
   Future<List<String>> getDatesList(String resultList) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> stringList = prefs.getStringList(ShPrefKeys.dateList) ?? [];
-    return stringList;
-  }
-
-  Future<List<String>> getStringList(String resultList) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> stringList = prefs.getStringList(ShPrefKeys.resultList) ?? [];
     return stringList;
   }
 }

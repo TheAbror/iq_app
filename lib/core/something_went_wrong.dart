@@ -19,3 +19,22 @@ class SomethingWentWrong extends StatelessWidget {
     );
   }
 }
+
+class NoRecordsFound extends StatelessWidget {
+  const NoRecordsFound({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'No Records Found',
+        style: TextStyle(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+}
