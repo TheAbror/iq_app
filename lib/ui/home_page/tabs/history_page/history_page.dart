@@ -35,7 +35,7 @@ class HistoryPage extends StatelessWidget {
                 var date = state.dateList[index];
                 return HistoryBodyItem(
                   index: (index + 1).toString(),
-                  date: date.substring(0, date.indexOf(',') + 1),
+                  date: date.substring(0, date.indexOf('2023') + 4),
                   time: '\n${date.substring(date.indexOf(',') + 1)}',
                   score: state.resultList[index],
                 );

@@ -16,7 +16,11 @@ Future<dynamic> clearHistory(BuildContext context) {
             //todo clear only history
             PreferencesServices.clearAll().then((value) {
               if (value) {
-                Navigator.pushNamed(context, AppRoutes.homePage);
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  AppRoutes.homePage,
+                  (route) => false,
+                );
               }
             });
           },

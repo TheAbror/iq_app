@@ -22,11 +22,13 @@ class HistoryBloc extends Cubit<HistoryState> {
       final List<String>? result = await _preferencesServices.getStringList(ShPrefKeys.resultList);
       final List<String>? dates = await _preferencesServices.getDatesList(ShPrefKeys.dateList);
       if (result != null && dates != null) {
-        emit(state.copyWith(
-          dateList: dates,
-          resultList: result,
-          blocProgress: BlocProgress.LOADED,
-        ));
+        emit(
+          state.copyWith(
+            dateList: dates,
+            resultList: result,
+            blocProgress: BlocProgress.LOADED,
+          ),
+        );
       }
     } catch (e) {
       emit(state.copyWith(
