@@ -13,14 +13,15 @@ class ToDosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.iconMain,
-          title: Text(
-            'ToDos',
-            style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
-          ),
+      appBar: AppBar(
+        backgroundColor: AppColors.iconMain,
+        title: Text(
+          'ToDos',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
         ),
-        body: ReorderableExample());
+      ),
+      body: ReorderableExample(),
+    );
   }
 }
 
@@ -55,13 +56,14 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
           ),
           child: Column(
             children: [
+              SizedBox(height: 20.h),
               searchBox(),
               Expanded(
                 child: ListView(
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                        top: 50,
+                        top: 40,
                         bottom: 20,
                       ),
                       child: Text(
@@ -90,13 +92,13 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
             Expanded(
               child: Container(
                 margin: EdgeInsets.only(
-                  bottom: 20,
+                  bottom: 35.h,
                   right: 20,
                   left: 20,
                 ),
                 padding: EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 5,
+                  horizontal: 20.w,
+                  vertical: 5.w,
                 ),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -104,7 +106,7 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
                     BoxShadow(
                       color: Colors.grey,
                       offset: Offset(0.0, 0.0),
-                      blurRadius: 10.0,
+                      blurRadius: 5,
                       spreadRadius: 0.0,
                     ),
                   ],
@@ -118,7 +120,7 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
             ),
             Container(
               margin: EdgeInsets.only(
-                bottom: 20,
+                bottom: 35.h,
                 right: 20,
               ),
               child: ElevatedButton(
@@ -128,7 +130,7 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: tdBlue,
                   minimumSize: Size(60, 60),
-                  elevation: 10,
+                  elevation: 5,
                 ),
                 child: Text(
                   '+',
