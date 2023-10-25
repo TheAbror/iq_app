@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/primary_loader.dart';
 import 'package:iq_app_mobile/core/something_went_wrong.dart';
 import 'package:iq_app_mobile/core/bloc_progress/bloc_progress.dart';
@@ -29,7 +30,7 @@ class HistoryPage extends StatelessWidget {
             if (state.resultList.isEmpty) {
               return const NoRecordsFound();
             }
-            return ListView.builder(
+            return ListView.separated(
               itemCount: state.dateList.length,
               itemBuilder: (context, index) {
                 var date = state.dateList[index];
@@ -38,6 +39,12 @@ class HistoryPage extends StatelessWidget {
                   date: date.substring(0, date.indexOf('2023') + 4),
                   time: '\n${date.substring(date.indexOf(',') + 1)}',
                   score: state.resultList[index],
+                );
+              },
+              separatorBuilder: (context, index) {
+                return Divider(
+                  thickness: 1,
+                  height: 1.h,
                 );
               },
             );
