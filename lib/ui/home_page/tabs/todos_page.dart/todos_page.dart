@@ -86,63 +86,67 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
             ],
           ),
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Row(children: [
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(
-                  bottom: 35.h,
-                  right: 20,
-                  left: 20,
-                ),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 20.w,
-                  vertical: 5.w,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(0.0, 0.0),
-                      blurRadius: 5,
-                      spreadRadius: 0.0,
-                    ),
-                  ],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: TextField(
-                  controller: _todoController,
-                  decoration: InputDecoration(hintText: 'Add a new todo item', border: InputBorder.none),
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(
-                bottom: 35.h,
-                right: 20,
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  _addToDoItem(_todoController.text);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: tdBlue,
-                  minimumSize: Size(60, 60),
-                  elevation: 5,
-                ),
-                child: Text(
-                  '+',
-                  style: TextStyle(
-                    fontSize: 40,
-                  ),
-                ),
-              ),
-            ),
-          ]),
-        ),
+        addNewToDo(),
       ],
+    );
+  }
+
+  Align addNewToDo() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Row(children: [
+        Expanded(
+          child: Container(
+            margin: EdgeInsets.only(
+              bottom: 35.h,
+              right: 20,
+              left: 20,
+            ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.w,
+              vertical: 5.w,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0.0, 0.0),
+                  blurRadius: 5,
+                  spreadRadius: 0.0,
+                ),
+              ],
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: TextField(
+              controller: _todoController,
+              decoration: InputDecoration(hintText: 'Add a new todo item', border: InputBorder.none),
+            ),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(
+            bottom: 35.h,
+            right: 20,
+          ),
+          child: ElevatedButton(
+            onPressed: () {
+              _addToDoItem(_todoController.text);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: tdBlue,
+              minimumSize: Size(60, 60),
+              elevation: 5,
+            ),
+            child: Text(
+              '+',
+              style: TextStyle(
+                fontSize: 40,
+              ),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 
@@ -210,6 +214,9 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
   }
 }
 
+
+
+
   // @override
   // Widget build(BuildContext context) {
   //   return ReorderableListView(
@@ -223,18 +230,6 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
   //             'Item ${_items[index]}',
   //             style: TextStyle(fontWeight: FontWeight.bold),
   //           ),
-  //           trailing: Container(
-  //             height: 20.w,
-  //             width: 20.w,
-  //             padding: EdgeInsets.all(8.w),
-  //             decoration: BoxDecoration(
-  //               color: AppColors.background,
-  //               borderRadius: BorderRadius.circular(4.r),
-  //               border: Border.all(
-  //                 color: AppColors.outline,
-  //                 width: 0.5.w,
-  //               ),
-  //             ),
   //           ),
   //         ),
   //     ],
