@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialogs/flutter_dialogs.dart';
+import 'package:iq_app_mobile/core/preference_services/preference_services.dart';
+import 'package:iq_app_mobile/core/roots/app_routes.dart';
 
 Future<dynamic> clearHistory(BuildContext context) {
   return showPlatformDialog(
@@ -12,11 +14,11 @@ Future<dynamic> clearHistory(BuildContext context) {
           title: const Text('Yes'),
           onPressed: () {
             //todo clear only history
-            // PreferencesServices.clearAll().then((value) {
-            //   if (value) {
-            //     Navigator.pushNamed(context, AppRoutes.splashPage);
-            //   }
-            // });
+            PreferencesServices.clearAll().then((value) {
+              if (value) {
+                Navigator.pushNamed(context, AppRoutes.homePage);
+              }
+            });
           },
         ),
         BasicDialogAction(

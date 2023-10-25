@@ -1,86 +1,74 @@
+// ignore_for_file: prefer_is_empty
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
+import 'package:iq_app_mobile/core/preference_services/preference_services.dart';
+import 'package:iq_app_mobile/core/preference_services/shpref_keys.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/history_page/clear_history_dialog.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/history_page/history_body_item.dart';
+import 'package:iq_app_mobile/ui/home_page/tabs/history_page/widgets/history_page_appbar.dart';
 
-class HistoryPage extends StatelessWidget {
+class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
 
-  //add shared prefernces
+  @override
+  State<HistoryPage> createState() => _HistoryPageState();
+}
+
+class _HistoryPageState extends State<HistoryPage> {
+  Future<List<String>?>? _resultFuture;
+  Future<List<String>?>? _resultDateFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _resultFuture = PreferencesServices().getStringList(ShPrefKeys.resultList);
+    _resultDateFuture = PreferencesServices().getDatesList(ShPrefKeys.dateList);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.float,
-        elevation: 1,
-        leading: const BackButton(color: AppColors.textMain),
-        title: const Text(
-          'History',
-          style: TextStyle(
-            color: AppColors.textMain,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.settings,
-              color: AppColors.textMain,
-            ),
-            onPressed: () {
-              clearHistory(context);
-            },
-          )
-        ],
+      appBar: historyPageAppBar(context),
+      body: FutureBuilder<List<String>?>(
+        future: _resultFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else if (snapshot.data?.length == 0) {
+            return Center(
+              child: Text('No Records Found'),
+            );
+          } else {
+            List<String>? result = snapshot.data;
+            return ListView.builder(
+              itemCount: result?.length ?? 0,
+              itemBuilder: (context, index) {
+                return FutureBuilder<List<String>?>(
+                  future: _resultDateFuture,
+                  builder: (context, dateSnapshot) {
+                    if (dateSnapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (dateSnapshot.hasError) {
+                      return Text('Error: ${dateSnapshot.error}');
+                    } else {
+                      List<String>? dates = dateSnapshot.data;
+                      return HistoryBodyItem(
+                        index: '1',
+                        date: dates?[index] ?? '',
+                        time: '\n 12:00 pm',
+                        score: result![index],
+                      );
+                    }
+                  },
+                );
+              },
+            );
+          }
+        },
       ),
-      body: const _Body(),
-    );
-  }
-}
-
-class _Body extends StatelessWidget {
-  const _Body({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 10.h),
-        const HistoryBodyItem(
-          index: '1',
-          date: '04 October, 2023',
-          time: '\n 12:00 pm',
-          score: '90',
-        ),
-        const HistoryBodyItem(
-          index: '2',
-          date: '6 October, 2023',
-          time: '\n 01:40 pm',
-          score: '78',
-        ),
-        const HistoryBodyItem(
-          index: '3',
-          date: '8 October, 2023',
-          time: '\n 04:40 pm',
-          score: '54',
-        ),
-        const HistoryBodyItem(
-          index: '4',
-          date: '10 October, 2023',
-          time: '\n 06:40 pm',
-          score: '102',
-        ),
-        const HistoryBodyItem(
-          index: '5',
-          date: '24 October, 2023',
-          time: '\n 05:40 pm',
-          score: '57',
-        ),
-      ],
     );
   }
 }

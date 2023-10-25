@@ -1,4 +1,4 @@
-import 'package:iq_app_mobile/core/preference_services/sh_pref_keys.dart';
+import 'package:iq_app_mobile/core/preference_services/shpref_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesServices {
@@ -25,5 +25,27 @@ class PreferencesServices {
   static Future<bool> clearAll() async {
     final preferences = await SharedPreferences.getInstance();
     return await preferences.clear();
+  }
+
+  Future<void> saveStringList(List<String> stringList) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(ShPrefKeys.resultList, stringList);
+  }
+
+  Future<void> saveDatesList(List<String> stringList) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(ShPrefKeys.dateList, stringList);
+  }
+
+  Future<List<String>> getDatesList(String resultList) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> stringList = prefs.getStringList(ShPrefKeys.dateList) ?? [];
+    return stringList;
+  }
+
+  Future<List<String>> getStringList(String resultList) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> stringList = prefs.getStringList(ShPrefKeys.resultList) ?? [];
+    return stringList;
   }
 }
