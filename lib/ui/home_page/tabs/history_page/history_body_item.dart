@@ -20,7 +20,7 @@ class HistoryBodyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: AppColors.textMain,
+        backgroundColor: AppColors.historyPageColor,
         child: Text(
           index,
           style: TextStyle(

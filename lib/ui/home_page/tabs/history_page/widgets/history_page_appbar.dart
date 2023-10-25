@@ -4,13 +4,11 @@ import 'package:iq_app_mobile/ui/home_page/tabs/history_page/clear_history_dialo
 
 AppBar historyPageAppBar(BuildContext context) {
   return AppBar(
-    backgroundColor: AppColors.float,
+    backgroundColor: AppColors.historyPageColor,
     elevation: 1,
-    leading: const BackButton(color: AppColors.textMain),
     title: const Text(
       'History',
       style: TextStyle(
-        color: AppColors.textMain,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -18,7 +16,6 @@ AppBar historyPageAppBar(BuildContext context) {
       IconButton(
         icon: const Icon(
           Icons.delete,
-          color: AppColors.textMain,
         ),
         onPressed: () {
           clearHistory(context);

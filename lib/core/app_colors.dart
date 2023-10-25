@@ -13,6 +13,7 @@ class AppColors {
   static const Color textSecondary = Color(0XFF858B91);
   static const Color signInTextColor = Color(0xFF262626);
   static const Color logInInTextColor = Color(0xFF8A8B8C);
+  static const Color historyPageColor = Color(0xff17181d);
 
   //neutral
   static const Color iconMain = Color(0XFF313235);

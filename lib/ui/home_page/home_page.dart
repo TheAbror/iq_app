@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
 import 'package:iq_app_mobile/core/preference_services/preference_services.dart';
 import 'package:iq_app_mobile/core/roots/app_routes.dart';
@@ -43,15 +44,15 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
+            children: [
               CircleAvatar(
                 radius: 27,
                 backgroundImage: AssetImage('assets/images/avatar.jpeg'),
               ),
-              // SvgPicture.asset(
-              //   'assets/images/Component 3.svg',
-              //   height: 60.h,
-              // ),
+              SvgPicture.asset(
+                'assets/images/Component 3.svg',
+                height: 60.h,
+              ),
             ],
           ),
         ),
@@ -66,13 +67,13 @@ class _HomePageState extends State<HomePage> {
               'Hi ' '$name',
               style: TextStyle(fontSize: 24.sp),
             ),
-            // Text(
-            //   'Welcome to Dr.iQ',
-            //   style: TextStyle(
-            //     fontSize: 28.sp,
-            //     fontWeight: FontWeight.bold,
-            //   ),
-            // ),
+            Text(
+              'Welcome to Dr.iQ',
+              style: TextStyle(
+                fontSize: 28.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             SizedBox(height: 40.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,11 +87,11 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
                 HomePageItem(
-                  icon: Icons.data_object_outlined,
-                  text: 'History',
-                  color: const Color(0xff17181d),
+                  icon: Icons.add_task_sharp,
+                  text: 'Todos',
+                  color: AppColors.iconMain,
                   onTap: () {
-                    Navigator.pushNamed(context, AppRoutes.historyPage);
+                    Navigator.pushNamed(context, AppRoutes.todos);
                   },
                 ),
               ],
@@ -104,17 +105,6 @@ class _HomePageState extends State<HomePage> {
                   text: 'Improve IQ',
                   color: Colors.blue.shade900,
                 ),
-                const HomePageItem(
-                  icon: Icons.settings_suggest_outlined,
-                  text: 'Settings',
-                  color: Color(0xff2ecc71),
-                ),
-              ],
-            ),
-            SizedBox(height: 15.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
                 HomePageItem(
                   icon: Icons.person_add_alt_1_outlined,
                   text: 'Profile  ',
@@ -123,10 +113,24 @@ class _HomePageState extends State<HomePage> {
                     Navigator.pushNamed(context, AppRoutes.profilePage);
                   },
                 ),
-                const HomePageItem(
+              ],
+            ),
+            SizedBox(height: 15.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                HomePageItem(
+                  icon: Icons.data_object_outlined,
+                  text: 'History',
+                  color: AppColors.historyPageColor,
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.historyPage);
+                  },
+                ),
+                HomePageItem(
                   icon: Icons.adobe_outlined,
                   text: 'About',
-                  color: Color(0xff13481d),
+                  color: AppColors.primary,
                 ),
               ],
             ),
