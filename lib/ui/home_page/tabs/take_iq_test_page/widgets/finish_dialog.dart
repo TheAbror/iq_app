@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -57,8 +59,8 @@ Future<dynamic> finishDialog(BuildContext context, QuestionsState state) {
                 print(formattedDate);
                 var preferencesServices = PreferencesServices();
 
-                List<String>? existingResultsList = await preferencesServices.getStringList(ShPrefKeys.resultList);
-                List<String>? existingDateList = await preferencesServices.getStringList(ShPrefKeys.dateList);
+                List<String>? existingResultsList = await preferencesServices.getResultList(ShPrefKeys.resultList);
+                List<String>? existingDateList = await preferencesServices.getDatesList(ShPrefKeys.dateList);
                 if (existingResultsList != null) {
                   existingResultsList.add(resultOfTest);
                 } else {

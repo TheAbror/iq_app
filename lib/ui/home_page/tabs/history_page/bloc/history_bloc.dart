@@ -19,7 +19,7 @@ class HistoryBloc extends Cubit<HistoryState> {
     emit(state.copyWith(blocProgress: BlocProgress.IS_LOADING));
 
     try {
-      final List<String>? result = await _preferencesServices.getStringList(ShPrefKeys.resultList);
+      final List<String>? result = await _preferencesServices.getResultList(ShPrefKeys.resultList);
       final List<String>? dates = await _preferencesServices.getDatesList(ShPrefKeys.dateList);
       if (result != null && dates != null) {
         emit(
