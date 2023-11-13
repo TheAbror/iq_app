@@ -29,7 +29,7 @@ class OptionsText extends StatelessWidget {
             var isCorrect = myValue["is_correct"];
             context.read<QuestionsBloc>().toNextQuestion();
             print('Selected value: ${myValue["option_text"]}');
-            print('Selected value: $isCorrect');
+            print('Is Correct: $isCorrect');
             if (isCorrect == true) {
               context.read<QuestionsBloc>().resultOfTest();
             }

@@ -22,6 +22,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
   @override
   Widget build(BuildContext context) {
     var questionsLength = GlobalConstants.questions.length;
+    print(questionsLength);
     return Scaffold(
       appBar: _takeIQTestAppBar(),
       body: SafeArea(
@@ -31,7 +32,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
             create: (context) => QuestionsBloc(),
             child: BlocConsumer<QuestionsBloc, QuestionsState>(
               listener: (context, state) async {
-                if (questionsLength == (state.questionCounter + 1)) {
+                if (questionsLength == (state.questionCounter)) {
                   finishDialog(context, state);
                 }
               },
