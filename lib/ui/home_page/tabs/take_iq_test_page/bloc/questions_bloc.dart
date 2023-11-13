@@ -1,17 +1,29 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, avoid_print
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
+import 'package:iq_app_mobile/core/global_constants.dart';
 
 part 'questions_state.dart';
 
 class QuestionsBloc extends Cubit<QuestionsState> {
   QuestionsBloc() : super(QuestionsState.initial());
+  var questionsLength = GlobalConstants.questions.length;
 
   void toNextQuestion() {
-    emit(state.copyWith(questionCounter: state.questionCounter + 1));
+    if (questionsLength > state.questionCounter + 1) {
+      emit(state.copyWith(questionCounter: state.questionCounter + 1));
+    }
+    print('Counter is :' ' ${state.questionCounter}');
+  }
+
+  void resultOfTest() {
+    if (questionsLength > state.questionCounter + 1) {
+      emit(state.copyWith(result: state.result + 1));
+    }
+    print('Correct answer :' '${state.result}');
   }
 
   void isCorrect(int counter, int questionCounter) {

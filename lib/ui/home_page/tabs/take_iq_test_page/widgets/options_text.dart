@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,8 +22,19 @@ class OptionsText extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       itemCount: 4,
       itemBuilder: (context, index) {
+        var myValue = GlobalConstants.questions[counter]["options"][index];
+
         return GestureDetector(
-          onTap: () => context.read<QuestionsBloc>().toNextQuestion(),
+          onTap: () {
+            var isCorrect = myValue["is_correct"];
+            context.read<QuestionsBloc>().toNextQuestion();
+            print('Selected value: ${myValue["option_text"]}');
+            print('Selected value: $isCorrect');
+            if (isCorrect == true) {
+              context.read<QuestionsBloc>().resultOfTest();
+            }
+            // resultOfTest
+          },
           child: Container(
             margin: EdgeInsets.symmetric(vertical: 8.h),
             padding: EdgeInsets.all(8.w),
@@ -31,7 +44,7 @@ class OptionsText extends StatelessWidget {
               border: Border.all(),
             ),
             child: Text(
-              GlobalConstants.questions[counter]["options"][index]["option_text"],
+              myValue["option_text"],
               style: const TextStyle(
                 color: AppColors.emirald,
                 fontWeight: FontWeight.bold,
