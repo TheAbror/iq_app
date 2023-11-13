@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
 import 'package:iq_app_mobile/core/global_constants.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/bloc/questions_bloc.dart';
+import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/finish_dialog.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/my_spacer.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/options_text.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/question_text.dart';
@@ -20,6 +21,7 @@ class TakeIQTest extends StatefulWidget {
 class _TakeIQTestState extends State<TakeIQTest> {
   @override
   Widget build(BuildContext context) {
+    var questionsLength = GlobalConstants.questions.length;
     return Scaffold(
       appBar: _takeIQTestAppBar(),
       body: SafeArea(
@@ -29,9 +31,9 @@ class _TakeIQTestState extends State<TakeIQTest> {
             create: (context) => QuestionsBloc(),
             child: BlocConsumer<QuestionsBloc, QuestionsState>(
               listener: (context, state) async {
-                // if (state.questions.length == (state.counter + 1)) {
-                //   finishDialog(context, state);
-                // }
+                if (questionsLength == (state.questionCounter + 1)) {
+                  finishDialog(context, state);
+                }
               },
               builder: (context, state) {
                 return Column(
@@ -41,7 +43,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
                       flex: 3,
                       child: PageView.builder(
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: GlobalConstants.questions.length,
+                        itemCount: questionsLength,
                         itemBuilder: (context, index) {
                           return Column(
                             children: [

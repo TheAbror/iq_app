@@ -23,7 +23,7 @@ class QuestionsBloc extends Cubit<QuestionsState> {
     if (questionsLength > state.questionCounter + 1) {
       emit(state.copyWith(result: state.result + 1));
     }
-    print('Correct answer :' '${state.result}');
+    print('Correct answers :' '${state.result}');
   }
 
   void isCorrect(int counter, int questionCounter) {

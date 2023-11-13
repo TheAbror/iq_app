@@ -70,7 +70,7 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
                         'All ToDos',
                         style: TextStyle(
                           fontSize: 30,
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -119,8 +119,14 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: TextField(
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+              ),
               controller: _todoController,
-              decoration: InputDecoration(hintText: 'Add a new todo item', border: InputBorder.none),
+              decoration: InputDecoration(
+                hintText: 'Add a new todo item',
+                border: InputBorder.none,
+              ),
             ),
           ),
         ),
@@ -207,7 +213,10 @@ class _ReorderableListViewExampleState extends State<ReorderableExample> {
           ),
           border: InputBorder.none,
           hintText: 'Search',
-          hintStyle: TextStyle(color: tdGrey),
+          hintStyle: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: tdGrey,
+          ),
         ),
       ),
     );
