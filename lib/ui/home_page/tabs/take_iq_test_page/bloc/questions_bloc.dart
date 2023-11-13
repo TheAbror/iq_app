@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
-import 'package:iq_app_mobile/core/bloc_progress/bloc_progress.dart';
 
 part 'questions_state.dart';
 

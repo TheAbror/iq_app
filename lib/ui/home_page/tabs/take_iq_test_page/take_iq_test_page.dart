@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
+import 'package:iq_app_mobile/core/global_constants.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/bloc/questions_bloc.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/my_spacer.dart';
 import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/widgets/options_text.dart';
@@ -40,7 +41,7 @@ class _TakeIQTestState extends State<TakeIQTest> {
                       flex: 3,
                       child: PageView.builder(
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: state.questionCounter,
+                        itemCount: GlobalConstants.questions.length,
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
