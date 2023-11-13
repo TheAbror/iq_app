@@ -71,26 +71,3 @@ class OptionsText extends StatelessWidget {
                 //   context.read<QuestionsBloc>().isInCorrect(widget.counter, questionCounter);
                 // }
   //             },
-  //             child: Container(
-  //               margin: EdgeInsets.symmetric(vertical: 8.h),
-  //               padding: EdgeInsets.all(8.w),
-  //               decoration: BoxDecoration(
-  //                 color: AppColors.textMain,
-  //                 borderRadius: BorderRadius.circular(8.r),
-  //                 border: Border.all(),
-  //               ),
-  //               child: Text(
-  //                 widget.state.questions[widget.counter].options[optionIndex].option,
-  //                 style: const TextStyle(
-  //                   color: AppColors.emirald,
-  //                   fontWeight: FontWeight.bold,
-  //                   fontSize: 24,
-  //                 ),
-  //                 textAlign: TextAlign.center,
-  //               ),
-  //             ),
-  //           );
-  //         },
-  //       );
-  //     },
-  //   );

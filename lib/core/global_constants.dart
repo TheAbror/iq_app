@@ -8,7 +8,7 @@ class GlobalConstants {
         {"option_text": "32", "is_correct": true},
         {"option_text": "64", "is_correct": false},
       ],
-      "question_text": "What is the next number in the seri}es? 2, 4, 8, 16, ?",
+      "question_text": "What is the next number in the series? 2, 4, 8, 16, ?",
     },
     {
       "id": 2,
