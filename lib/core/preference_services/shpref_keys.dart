@@ -3,4 +3,5 @@ abstract class ShPrefKeys {
   static const age = 'age';
   static const resultList = 'myStringList';
   static const dateList = 'myDateList';
+  static const todos = 'todos';
 }

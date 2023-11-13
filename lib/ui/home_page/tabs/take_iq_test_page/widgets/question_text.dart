@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iq_app_mobile/core/app_colors.dart';
-import 'package:iq_app_mobile/ui/home_page/tabs/take_iq_test_page/bloc/questions_bloc.dart';
+import 'package:iq_app_mobile/core/global_constants.dart';
 
 class QuestionText extends StatelessWidget {
   final int counter;
-  final QuestionsState state;
 
   const QuestionText({
     super.key,
     required this.counter,
-    required this.state,
   });
 
   @override
@@ -26,7 +24,7 @@ class QuestionText extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          state.questions[counter].question,
+          GlobalConstants.questions[counter]['question_text'],
           style: TextStyle(
             color: AppColors.float,
             fontWeight: FontWeight.bold,

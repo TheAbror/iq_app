@@ -34,60 +34,60 @@ Future<dynamic> finishDialog(BuildContext context, QuestionsState state) {
               child: const RiveAnimation.asset('assets/images/5103-10277-handshake.riv'),
             ),
             const SizedBox(height: 15),
-            Center(
-              child: Text(
-                '${state.result.toString()} out of ${state.questions.length}',
-                style: TextStyle(
-                  color: AppColors.textMain,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.sp,
-                ),
-              ),
-            ),
+            // Center(
+            //   child: Text(
+            //     '${state.result.toString()} out of ${state.questions.length}',
+            //     style: TextStyle(
+            //       color: AppColors.textMain,
+            //       fontWeight: FontWeight.bold,
+            //       fontSize: 30.sp,
+            //     ),
+            //   ),
+            // ),
             const SizedBox(height: 35),
-            TextButton(
-              onPressed: () async {
-                Navigator.pop(dialogContext);
-                Navigator.pop(dialogContext);
-                // Navigator.pop(context);
-                var resultOfTest = ((state.result / state.questions.length) * 100).toString();
-                final dateFormatter = DateFormat('dd-MM-yyyy, HH:mm');
+            // TextButton(
+            //   onPressed: () async {
+            //     Navigator.pop(dialogContext);
+            //     Navigator.pop(dialogContext);
+            //     // Navigator.pop(context);
+            //     var resultOfTest = ((state.result / state.questions.length) * 100).toString();
+            //     final dateFormatter = DateFormat('dd-MM-yyyy, HH:mm');
 
-                final today = DateTime.now();
-                var formattedDate = dateFormatter.format(today);
-                //
-                print(formattedDate);
-                var preferencesServices = PreferencesServices();
+            //     final today = DateTime.now();
+            //     var formattedDate = dateFormatter.format(today);
+            //     //
+            //     print(formattedDate);
+            //     var preferencesServices = PreferencesServices();
 
-                List<String>? existingResultsList = await preferencesServices.getResultList(ShPrefKeys.resultList);
-                List<String>? existingDateList = await preferencesServices.getDatesList(ShPrefKeys.dateList);
-                if (existingResultsList != null) {
-                  existingResultsList.add(resultOfTest);
-                } else {
-                  existingResultsList = [resultOfTest];
-                }
-                //
-                if (existingDateList != null) {
-                  existingDateList.add(formattedDate);
-                } else {
-                  existingDateList = [formattedDate];
-                }
-                await preferencesServices.saveStringList(existingResultsList);
-                await preferencesServices.saveDatesList(existingDateList);
-              },
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                  AppColors.textMain,
-                ),
-              ),
-              child: const Text(
-                'Close',
-                style: TextStyle(
-                  color: AppColors.float,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            //     List<String>? existingResultsList = await preferencesServices.getResultList(ShPrefKeys.resultList);
+            //     List<String>? existingDateList = await preferencesServices.getDatesList(ShPrefKeys.dateList);
+            //     if (existingResultsList != null) {
+            //       existingResultsList.add(resultOfTest);
+            //     } else {
+            //       existingResultsList = [resultOfTest];
+            //     }
+            //     //
+            //     if (existingDateList != null) {
+            //       existingDateList.add(formattedDate);
+            //     } else {
+            //       existingDateList = [formattedDate];
+            //     }
+            //     await preferencesServices.saveStringList(existingResultsList);
+            //     await preferencesServices.saveDatesList(existingDateList);
+            //   },
+            //   style: ButtonStyle(
+            //     backgroundColor: MaterialStateProperty.all(
+            //       AppColors.textMain,
+            //     ),
+            //   ),
+            //   child: const Text(
+            //     'Close',
+            //     style: TextStyle(
+            //       color: AppColors.float,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       );

@@ -6,7 +6,7 @@ class AppColors {
   static const Color primaryLight = Color(0XFFE0E7FF);
   static const Color primaryDark = Color(0XFF1B2F73);
   static const Color velvet = Color(0XFF7436F8);
-  static const Color profileColor = Color(0XFFfd830d);
+  static const Color profileColor = Color(0XFF1AB269);
 
   //text
   static const Color textMain = Color(0XFF2B2F3B);

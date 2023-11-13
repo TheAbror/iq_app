@@ -1,56 +1,41 @@
 part of 'questions_bloc.dart';
 
 class QuestionsState extends Equatable {
-  final int counter;
+  final int questionCounter;
   final List<Icon> icons;
   final int result;
-  final List<QuestionsResponse> questions;
-  final List<Options> options;
   final BlocProgress blocProgress;
   final String failureMessage;
 
   const QuestionsState({
+    required this.questionCounter,
     required this.icons,
     required this.result,
-    required this.counter,
-    required this.questions,
-    required this.options,
     required this.blocProgress,
     required this.failureMessage,
   });
 
   factory QuestionsState.initial() {
     return QuestionsState(
-      counter: 0,
+      questionCounter: 0,
       icons: const [],
-      questions: [
-        QuestionsResponse(
-          question: '',
-          options: [],
-        ),
-      ],
       result: 0,
-      options: const [],
       blocProgress: BlocProgress.IS_LOADING,
       failureMessage: '',
     );
   }
 
   QuestionsState copyWith({
-    int? counter,
+    int? questionCounter,
     List<Icon>? icons,
     int? result,
-    List<QuestionsResponse>? questions,
-    List<Options>? options,
     BlocProgress? blocProgress,
     String? failureMessage,
   }) {
     return QuestionsState(
-      counter: counter ?? this.counter,
+      questionCounter: questionCounter ?? this.questionCounter,
       icons: icons ?? this.icons,
       result: result ?? this.result,
-      questions: questions ?? this.questions,
-      options: options ?? this.options,
       blocProgress: blocProgress ?? this.blocProgress,
       failureMessage: failureMessage ?? this.failureMessage,
     );
@@ -58,11 +43,9 @@ class QuestionsState extends Equatable {
 
   @override
   List<Object?> get props => [
-        counter,
+        questionCounter,
         icons,
         result,
-        questions,
-        options,
         blocProgress,
         failureMessage,
       ];
